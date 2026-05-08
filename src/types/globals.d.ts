@@ -1,6 +1,8 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
+  /** When set, LibreOffice WASM loads from this URL prefix (trailing slash optional). For hosts with a small per-file limit (e.g. Cloudflare 25 MiB). */
+  readonly VITE_LIBREOFFICE_BASE_URL?: string;
   readonly VITE_TESSERACT_WORKER_URL?: string;
   readonly VITE_TESSERACT_CORE_URL?: string;
   readonly VITE_TESSERACT_LANG_URL?: string;
