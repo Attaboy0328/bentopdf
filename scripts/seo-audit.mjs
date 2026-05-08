@@ -13,6 +13,12 @@ const SITE_URL = (process.env.SITE_URL || 'https://www.bentopdf.com').replace(
 );
 const HOST = new URL(SITE_URL).hostname;
 
+// Vite base path for subdirectory deploys (e.g. GitHub Pages project sites).
+// GitHub Actions sets BASE_URL to vars.BASE_URL + "/", e.g. "/bentopdf/".
+const BASE_PATH_SEGMENTS = (process.env.BASE_URL || '')
+  .split('/')
+  .filter(Boolean);
+
 const NOINDEX_ALLOWLIST = new Set(['404.html', 'wasm-settings.html']);
 const SKIP_DIRS = new Set([
   'assets',
@@ -72,7 +78,7 @@ function expectedCanonicalForFile(rel) {
   const langPrefix = parts.length > 0 ? parts.join('/') : '';
   const baseName = fileName.replace(/\.html$/, '');
   const slug = baseName === 'index' ? '' : baseName;
-  const segments = [SITE_URL];
+  const segments = [SITE_URL, ...BASE_PATH_SEGMENTS];
   if (langPrefix) segments.push(langPrefix);
   if (slug) segments.push(slug);
   return segments.join('/').replace(/\/+$/, '') || SITE_URL;
