@@ -23,6 +23,11 @@ import {
   isToolDisabled,
   isCurrentPageDisabled,
 } from './utils/disabled-tools.js';
+import {
+  categoryTranslationKeys,
+  toolTranslationKeys,
+} from './config/i18n-tool-maps.js';
+import { mountHeaderCategoryNav } from './ui/header-category-nav.js';
 declare const __BRAND_NAME__: string;
 
 const init = async () => {
@@ -146,135 +151,24 @@ const init = async () => {
     shortcutSettingsBtn.style.display = 'none';
   }
 
-  const categoryTranslationKeys: Record<string, string> = {
-    'Popular Tools': 'tools:categories.popularTools',
-    'Edit & Annotate': 'tools:categories.editAnnotate',
-    'Convert to PDF': 'tools:categories.convertToPdf',
-    'Convert from PDF': 'tools:categories.convertFromPdf',
-    'Organize & Manage': 'tools:categories.organizeManage',
-    'Optimize & Repair': 'tools:categories.optimizeRepair',
-    'Secure PDF': 'tools:categories.securePdf',
-  };
+  const filteredCategories = categories
+    .map((category) => ({
+      ...category,
+      tools: category.tools.filter((tool) => !isToolDisabled(tool.id)),
+    }))
+    .filter((category) => category.tools.length > 0);
 
-  const toolTranslationKeys: Record<string, string> = {
-    'PDF Workflow Builder': 'tools:pdfWorkflow',
-    'PDF Multi Tool': 'tools:pdfMultiTool',
-    'Merge PDF': 'tools:mergePdf',
-    'Split PDF': 'tools:splitPdf',
-    'Compress PDF': 'tools:compressPdf',
-    'PDF Editor': 'tools:pdfEditor',
-    'JPG to PDF': 'tools:jpgToPdf',
-    'Sign PDF': 'tools:signPdf',
-    'Crop PDF': 'tools:cropPdf',
-    'Extract Pages': 'tools:extractPages',
-    'Duplicate & Organize': 'tools:duplicateOrganize',
-    'Delete Pages': 'tools:deletePages',
-    'Edit Bookmarks': 'tools:editBookmarks',
-    'Table of Contents': 'tools:tableOfContents',
-    'Page Numbers': 'tools:pageNumbers',
-    'Add Page Labels': 'tools:addPageLabels',
-    'Add Watermark': 'tools:addWatermark',
-    'Header & Footer': 'tools:headerFooter',
-    'Invert Colors': 'tools:invertColors',
-    'Background Color': 'tools:backgroundColor',
-    'Change Text Color': 'tools:changeTextColor',
-    'Add Stamps': 'tools:addStamps',
-    'Bates Numbering': 'tools:batesNumbering',
-    'Remove Annotations': 'tools:removeAnnotations',
-    'PDF Form Filler': 'tools:pdfFormFiller',
-    'Create PDF Form': 'tools:createPdfForm',
-    'Remove Blank Pages': 'tools:removeBlankPages',
-    'Images to PDF': 'tools:imageToPdf',
-    'PNG to PDF': 'tools:pngToPdf',
-    'WebP to PDF': 'tools:webpToPdf',
-    'SVG to PDF': 'tools:svgToPdf',
-    'BMP to PDF': 'tools:bmpToPdf',
-    'HEIC to PDF': 'tools:heicToPdf',
-    'TIFF to PDF': 'tools:tiffToPdf',
-    'Text to PDF': 'tools:textToPdf',
-    'JSON to PDF': 'tools:jsonToPdf',
-    'PDF to JPG': 'tools:pdfToJpg',
-    'PDF to PNG': 'tools:pdfToPng',
-    'PDF to WebP': 'tools:pdfToWebp',
-    'PDF to BMP': 'tools:pdfToBmp',
-    'PDF to TIFF': 'tools:pdfToTiff',
-    'PDF to CBZ': 'tools:pdfToCbz',
-    'PDF to Greyscale': 'tools:pdfToGreyscale',
-    'PDF to JSON': 'tools:pdfToJson',
-    'OCR PDF': 'tools:ocrPdf',
-    'Alternate & Mix Pages': 'tools:alternateMerge',
-    'PDF Overlay': 'tools:pdfOverlay',
-    'Organize & Duplicate': 'tools:duplicateOrganize',
-    'Add Attachments': 'tools:addAttachments',
-    'Extract Attachments': 'tools:extractAttachments',
-    'Edit Attachments': 'tools:editAttachments',
-    'Divide Pages': 'tools:dividePages',
-    'Add Blank Page': 'tools:addBlankPage',
-    'Reverse Pages': 'tools:reversePages',
-    'Rotate PDF': 'tools:rotatePdf',
-    'Rotate by Custom Degrees': 'tools:rotateCustom',
-    'N-Up PDF': 'tools:nUpPdf',
-    'Combine to Single Page': 'tools:combineToSinglePage',
-    'View Metadata': 'tools:viewMetadata',
-    'Edit Metadata': 'tools:editMetadata',
-    'PDFs to ZIP': 'tools:pdfsToZip',
-    'Compare PDFs': 'tools:comparePdfs',
-    'Posterize PDF': 'tools:posterizePdf',
-    'Fix Page Size': 'tools:fixPageSize',
-    'Linearize PDF': 'tools:linearizePdf',
-    'Page Dimensions': 'tools:pageDimensions',
-    'Remove Restrictions': 'tools:removeRestrictions',
-    'Repair PDF': 'tools:repairPdf',
-    'Encrypt PDF': 'tools:encryptPdf',
-    'Sanitize PDF': 'tools:sanitizePdf',
-    'Decrypt PDF': 'tools:decryptPdf',
-    'Flatten PDF': 'tools:flattenPdf',
-    'Remove Metadata': 'tools:removeMetadata',
-    'Change Permissions': 'tools:changePermissions',
-    'Email to PDF': 'tools:emailToPdf',
-    'Font to Outline': 'tools:fontToOutline',
-    'Deskew PDF': 'tools:deskewPdf',
-    'Digital Signature': 'tools:digitalSignPdf',
-    'Validate Signature': 'tools:validateSignaturePdf',
-    'Timestamp PDF': 'tools:timestampPdf',
-    'Scanner Effect': 'tools:scannerEffect',
-    'Adjust Colors': 'tools:adjustColors',
-    'Markdown to PDF': 'tools:markdownToPdf',
-    'PDF Booklet': 'tools:pdfBooklet',
-    'Word to PDF': 'tools:wordToPdf',
-    'Excel to PDF': 'tools:excelToPdf',
-    'PowerPoint to PDF': 'tools:powerpointToPdf',
-    'XPS to PDF': 'tools:xpsToPdf',
-    'MOBI to PDF': 'tools:mobiToPdf',
-    'EPUB to PDF': 'tools:epubToPdf',
-    'FB2 to PDF': 'tools:fb2ToPdf',
-    'CBZ to PDF': 'tools:cbzToPdf',
-    'WPD to PDF': 'tools:wpdToPdf',
-    'WPS to PDF': 'tools:wpsToPdf',
-    'XML to PDF': 'tools:xmlToPdf',
-    'Pages to PDF': 'tools:pagesToPdf',
-    'ODG to PDF': 'tools:odgToPdf',
-    'ODS to PDF': 'tools:odsToPdf',
-    'ODP to PDF': 'tools:odpToPdf',
-    'PUB to PDF': 'tools:pubToPdf',
-    'VSD to PDF': 'tools:vsdToPdf',
-    'PSD to PDF': 'tools:psdToPdf',
-    'ODT to PDF': 'tools:odtToPdf',
-    'CSV to PDF': 'tools:csvToPdf',
-    'RTF to PDF': 'tools:rtfToPdf',
-    'PDF to SVG': 'tools:pdfToSvg',
-    'PDF to CSV': 'tools:pdfToCsv',
-    'PDF to Excel': 'tools:pdfToExcel',
-    'PDF to Text': 'tools:pdfToText',
-    'Extract Tables': 'tools:extractTables',
-    'PDF to Word': 'tools:pdfToWord',
-    'Extract Images': 'tools:extractImages',
-    'PDF to Markdown': 'tools:pdfToMarkdown',
-    'Prepare PDF for AI': 'tools:preparePdfForAi',
-    'PDF OCG': 'tools:pdfOcg',
-    'PDF to PDF/A': 'tools:pdfToPdfa',
-    'Rasterize PDF': 'tools:rasterizePdf',
-  };
+  const HOME_NAVIGABLE_TOOL_IDS = new Set(['pdf-workflow', 'pdf-multi-tool']);
+
+  const headerNavEl = document.getElementById('mypdf-header-category-nav');
+  if (headerNavEl && filteredCategories.length > 0) {
+    const homeToolGrid = document.body.classList.contains('mypdf-home');
+    mountHeaderCategoryNav({
+      filteredCategories,
+      t,
+      allowedToolIds: homeToolGrid ? HOME_NAVIGABLE_TOOL_IDS : undefined,
+    });
+  }
 
   // Homepage-only tool grid rendering (not used on individual tool pages)
   if (dom.toolGrid) {
@@ -296,96 +190,6 @@ const init = async () => {
         JSON.stringify(collapsedCategories)
       );
     }
-
-    const filteredCategories = categories
-      .map((category) => ({
-        ...category,
-        tools: category.tools.filter((tool) => !isToolDisabled(tool.id)),
-      }))
-      .filter((category) => category.tools.length > 0);
-
-    const mountHeaderCategoryNav = () => {
-      const headerNav = document.getElementById('mypdf-header-category-nav');
-      if (!headerNav || filteredCategories.length === 0) return;
-
-      const prefersCoarsePointer =
-        typeof window.matchMedia === 'function' &&
-        window.matchMedia('(hover: none)').matches;
-
-      headerNav.textContent = '';
-
-      const closeAll = () => {
-        headerNav
-          .querySelectorAll('.mypdf-header-nav-dropdown.is-open')
-          .forEach((el) => {
-            el.classList.remove('is-open');
-            const btn = el.querySelector('.mypdf-header-nav-trigger');
-            if (btn) btn.setAttribute('aria-expanded', 'false');
-          });
-      };
-
-      filteredCategories.forEach((category) => {
-        const wrap = document.createElement('div');
-        wrap.className = 'mypdf-header-nav-dropdown';
-
-        const trigger = document.createElement('button');
-        trigger.type = 'button';
-        trigger.className = 'mypdf-header-nav-trigger';
-        const catKey = categoryTranslationKeys[category.name];
-        trigger.textContent = catKey ? t(catKey) : category.name;
-        trigger.setAttribute('aria-expanded', 'false');
-        trigger.setAttribute('aria-haspopup', 'true');
-
-        const panel = document.createElement('div');
-        panel.className = 'mypdf-header-nav-panel';
-        panel.setAttribute('role', 'menu');
-
-        category.tools.forEach((tool) => {
-          if (!tool.href) return;
-          const link = document.createElement('a');
-          link.href = tool.href;
-          link.className = 'mypdf-header-nav-link';
-          link.setAttribute('role', 'menuitem');
-          const tk = toolTranslationKeys[tool.name];
-          link.textContent = tk ? t(`${tk}.name`) : tool.name;
-          panel.appendChild(link);
-        });
-
-        if (prefersCoarsePointer) {
-          trigger.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const wasOpen = wrap.classList.contains('is-open');
-            closeAll();
-            if (!wasOpen) {
-              wrap.classList.add('is-open');
-              trigger.setAttribute('aria-expanded', 'true');
-            }
-          });
-
-          panel.addEventListener('click', (e) => {
-            if ((e.target as HTMLElement).closest('a')) closeAll();
-          });
-        }
-
-        wrap.append(trigger, panel);
-        headerNav.appendChild(wrap);
-      });
-
-      if (prefersCoarsePointer) {
-        document.addEventListener('click', (e) => {
-          if (!headerNav.contains(e.target as Node)) closeAll();
-        });
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeAll();
-      });
-
-      headerNav.classList.add('is-mounted');
-    };
-
-    mountHeaderCategoryNav();
 
     filteredCategories.forEach((category) => {
       const categoryGroup = document.createElement('div');
@@ -455,10 +259,19 @@ const init = async () => {
           ? 'mypdf-tool-card border shadow-sm'
           : 'bg-gray-800 hover:shadow-lg';
 
-        if (tool.href) {
+        const toolIdForNav = tool.id || getToolId(tool);
+        const canOpenTool =
+          !homeToolGrid || HOME_NAVIGABLE_TOOL_IDS.has(toolIdForNav);
+
+        if (tool.href && canOpenTool) {
           toolCard = document.createElement('a');
           toolCard.href = tool.href;
           toolCard.className = `tool-card block rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center no-underline transition duration-200 ${cardSurface}`;
+        } else if (homeToolGrid && tool.href && !canOpenTool) {
+          toolCard = document.createElement('div');
+          toolCard.className = `tool-card block rounded-xl p-4 flex flex-col items-center justify-center text-center transition duration-200 ${cardSurface} mypdf-tool-card--locked`;
+          toolCard.dataset.toolId = tool.id || getToolId(tool);
+          toolCard.setAttribute('aria-disabled', 'true');
         } else {
           toolCard = document.createElement('div');
           toolCard.className = `tool-card rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center transition duration-200 ${cardSurface}`;
