@@ -728,20 +728,8 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Editorial landing (aligned with quotation.282913.xyz trust / paper theme) */
+/* MyPDF themes — quotation.282913.xyz editorial palette (light + dark)       */
 /* -------------------------------------------------------------------------- */
-
-:root {
-  --qe-primary: #0062ad;
-  --qe-deep: #304166;
-  --qe-ink: #0a2540;
-  --qe-paper: #f9f8f6;
-  --qe-paper-surface: #fefdfb;
-  --qe-paper-muted: #f4f2ef;
-  --qe-hairline: #e8e4dd;
-  --qe-gold: #b5894a;
-  --qe-gold-soft: #e9d9b8;
-}
 
 .font-en {
   font-family:
@@ -762,9 +750,49 @@ input[type='number']::-webkit-outer-spin-button {
   font-feature-settings: 'tnum' 1;
 }
 
-body.mypdf-editorial {
-  background-color: var(--qe-paper);
-  color: #334155;
+html[data-theme='light'] {
+  color-scheme: light;
+  --mypdf-primary: #0062ad;
+  --mypdf-primary-hover: #005091;
+  --mypdf-deep: #304166;
+  --mypdf-ink: #0a2540;
+  --mypdf-muted: #64748b;
+  --mypdf-page-bg: #f9f8f6;
+  --mypdf-surface: #fefdfb;
+  --mypdf-surface-2: #f4f2ef;
+  --mypdf-nav-bg: rgba(254, 253, 251, 0.92);
+  --mypdf-hairline: #e8e4dd;
+  --mypdf-card-border: rgba(232, 228, 221, 0.95);
+  --mypdf-gold: #b5894a;
+  --mypdf-gold-soft: #e9d9b8;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --mypdf-primary: #3d9fdf;
+  --mypdf-primary-hover: #62b4ef;
+  --mypdf-deep: #8ba4c7;
+  --mypdf-ink: #e8eef7;
+  --mypdf-muted: #94a3b8;
+  --mypdf-page-bg: #0b1220;
+  --mypdf-surface: #121a2c;
+  --mypdf-surface-2: #172038;
+  --mypdf-nav-bg: rgba(15, 23, 42, 0.88);
+  --mypdf-hairline: rgba(148, 163, 184, 0.22);
+  --mypdf-card-border: rgba(148, 163, 184, 0.18);
+  --mypdf-gold: #c9a968;
+  --mypdf-gold-soft: #9e7a3a;
+}
+
+html[data-theme='light'] body,
+html[data-theme='dark'] body {
+  background-color: var(--mypdf-page-bg);
+  color: var(--mypdf-muted);
+}
+
+body.mypdf-home {
+  background-color: var(--mypdf-page-bg);
+  color: var(--mypdf-muted);
   font-family:
     'Inter',
     'Noto Sans SC',
@@ -774,33 +802,112 @@ body.mypdf-editorial {
     sans-serif;
 }
 
-body.mypdf-editorial nav[data-simple-nav] {
-  background-color: rgba(254, 253, 251, 0.92);
-  border-bottom-color: var(--qe-hairline);
+.mypdf-nav {
+  border-bottom: 1px solid var(--mypdf-hairline);
+  background-color: var(--mypdf-nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-body.mypdf-editorial #nav-brand a,
-body.mypdf-editorial #nav-brand {
-  color: var(--qe-ink);
+.mypdf-nav-brand,
+.mypdf-nav-brand a {
+  color: var(--mypdf-ink);
 }
 
-body.mypdf-editorial footer[data-simple-footer] {
-  margin-top: 4rem;
-  border-top-width: 1px;
-  border-top-color: var(--qe-hairline);
-  background-color: var(--qe-paper-muted);
+.mypdf-nav-brand a:hover {
+  color: var(--mypdf-primary);
 }
 
-body.mypdf-editorial #footer-brand {
-  color: var(--qe-ink);
+#mypdf-theme-toggle {
+  border: 1px solid var(--mypdf-hairline);
+  background-color: var(--mypdf-surface-2);
+  color: var(--mypdf-ink);
 }
 
-body.mypdf-editorial #footer-copyright,
-body.mypdf-editorial footer .text-gray-400,
-body.mypdf-editorial footer .text-gray-500 {
-  color: #64748b;
+#mypdf-theme-toggle:hover {
+  border-color: color-mix(
+    in srgb,
+    var(--mypdf-primary) 55%,
+    var(--mypdf-hairline)
+  );
+  color: var(--mypdf-primary);
+}
+
+body:not(.mypdf-home) #mypdf-theme-toggle {
+  display: none;
+}
+
+.mypdf-eyebrow {
+  color: color-mix(in srgb, var(--mypdf-deep) 78%, transparent);
+}
+
+.mypdf-hero-title {
+  color: var(--mypdf-ink);
+}
+
+.mypdf-hero-subtitle {
+  color: var(--mypdf-muted);
+}
+
+.mypdf-stat-num {
+  color: var(--mypdf-primary);
+}
+
+.mypdf-stat-label {
+  color: var(--mypdf-muted);
+}
+
+.mypdf-hairline {
+  display: block;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--mypdf-hairline) 18%,
+    var(--mypdf-hairline) 82%,
+    transparent
+  );
+}
+
+.mypdf-search {
+  background-color: var(--mypdf-surface);
+  border: 1px solid var(--mypdf-hairline);
+  color: var(--mypdf-ink);
+}
+
+.mypdf-search:focus {
+  outline: none;
+  border-color: var(--mypdf-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--mypdf-primary) 22%, transparent);
+}
+
+.mypdf-search-icon {
+  color: var(--mypdf-muted);
+}
+
+.mypdf-kbd {
+  background-color: var(--mypdf-surface-2);
+  border: 1px solid var(--mypdf-hairline);
+  color: var(--mypdf-muted);
+}
+
+.mypdf-icon-btn {
+  color: var(--mypdf-muted);
+}
+
+.mypdf-icon-btn:hover {
+  background-color: var(--mypdf-surface-2);
+  color: var(--mypdf-primary);
+}
+
+.mypdf-scroll-top {
+  background-color: var(--mypdf-primary);
+  box-shadow:
+    0 10px 28px -10px color-mix(in srgb, var(--mypdf-primary) 45%, transparent);
+}
+
+.mypdf-scroll-top:hover {
+  background-color: var(--mypdf-primary-hover);
 }
 
 .mypdf-landing-atmosphere {
@@ -808,7 +915,7 @@ body.mypdf-editorial footer .text-gray-500 {
   isolation: isolate;
 }
 
-.mypdf-landing-atmosphere::before {
+html[data-theme='light'] .mypdf-landing-atmosphere::before {
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
@@ -833,146 +940,100 @@ body.mypdf-editorial footer .text-gray-500 {
   z-index: 0;
 }
 
+html[data-theme='dark'] .mypdf-landing-atmosphere::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 720px;
+  background:
+    radial-gradient(
+      900px 520px at 50% -140px,
+      rgba(61, 159, 223, 0.14),
+      transparent 72%
+    ),
+    radial-gradient(
+      620px 360px at 10% 160px,
+      rgba(201, 169, 104, 0.07),
+      transparent 78%
+    ),
+    radial-gradient(
+      720px 400px at 92% 200px,
+      rgba(0, 98, 173, 0.09),
+      transparent 78%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
 .mypdf-landing-atmosphere > * {
   position: relative;
   z-index: 1;
 }
 
-.mypdf-hairline {
-  display: block;
-  height: 1px;
+body.mypdf-home .marker-slanted::before {
   background: linear-gradient(
-    to right,
-    transparent,
-    var(--qe-hairline) 18%,
-    var(--qe-hairline) 82%,
-    transparent
+    120deg,
+    var(--mypdf-primary),
+    var(--mypdf-gold-soft)
   );
 }
 
-body.mypdf-editorial .marker-slanted::before {
-  background: linear-gradient(120deg, var(--qe-primary), var(--qe-gold-soft));
+body.mypdf-home .category-header {
+  color: var(--mypdf-ink);
 }
 
-body.mypdf-editorial .section-divider {
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--qe-hairline),
-    transparent
-  );
-  opacity: 1;
+body.mypdf-home .category-header:hover {
+  color: var(--mypdf-primary);
 }
 
-body.mypdf-editorial .category-header {
-  color: var(--qe-ink);
+body.mypdf-home .category-header:hover .category-chevron {
+  color: var(--mypdf-primary);
 }
 
-body.mypdf-editorial .category-header:hover {
-  color: var(--qe-primary);
+body.mypdf-home .mypdf-category-chevron {
+  color: var(--mypdf-muted);
 }
 
-body.mypdf-editorial .category-header:hover .category-chevron {
-  color: var(--qe-primary);
+body.mypdf-home #tool-grid .tool-card.mypdf-tool-card {
+  background-color: var(--mypdf-surface);
+  border-color: var(--mypdf-card-border);
+  border-width: 1px;
+  border-style: solid;
 }
 
-body.mypdf-editorial .tool-card {
-  border-color: var(--qe-hairline);
-  background-color: var(--qe-paper-surface);
-}
-
-body.mypdf-editorial .tool-card:hover {
-  border-color: rgba(0, 98, 173, 0.35);
+body.mypdf-home #tool-grid .tool-card.mypdf-tool-card:hover {
+  border-color: color-mix(in srgb, var(--mypdf-primary) 45%, var(--mypdf-card-border));
   box-shadow:
-    0 10px 24px -12px rgba(0, 98, 173, 0.18),
-    0 4px 8px -4px rgba(10, 37, 64, 0.06);
+    0 12px 28px -14px color-mix(in srgb, var(--mypdf-primary) 28%, transparent),
+    0 4px 12px -4px rgba(0, 0, 0, 0.12);
 }
 
-body.mypdf-editorial.compact-mode .tool-card {
-  border-bottom-color: var(--qe-hairline);
+body.mypdf-home #tool-grid .tool-card-icon {
+  color: var(--mypdf-primary);
 }
 
-body.mypdf-editorial.compact-mode .tool-card:hover {
-  background-color: rgba(0, 98, 173, 0.05);
+body.mypdf-home #tool-grid .tool-card-title {
+  color: var(--mypdf-ink);
 }
 
-body.mypdf-editorial #security-compliance-section .text-white {
-  color: var(--qe-ink) !important;
+body.mypdf-home #tool-grid .tool-card-desc {
+  color: var(--mypdf-muted);
 }
 
-body.mypdf-editorial #security-compliance-section .text-gray-400 {
-  color: #64748b !important;
+body.mypdf-home.compact-mode #tool-grid .tool-card.mypdf-tool-card {
+  border-bottom-color: var(--mypdf-hairline);
 }
 
-body.mypdf-editorial #security-compliance-section .text-indigo-400 {
-  color: var(--qe-primary) !important;
-}
-
-body.mypdf-editorial #security-compliance-section .border-indigo-400 {
-  border-color: var(--qe-primary) !important;
-}
-
-body.mypdf-editorial #security-compliance-section .bg-indigo-900 {
-  background-color: rgba(0, 98, 173, 0.09) !important;
-}
-
-body.mypdf-editorial #security-compliance-section .text-indigo-300 {
-  color: var(--qe-deep) !important;
-}
-
-body.mypdf-editorial #faq-accordion > h2,
-body.mypdf-editorial #testimonials-section > h2 {
-  color: var(--qe-ink) !important;
-}
-
-body.mypdf-editorial .faq-item.bg-gray-800 {
-  background-color: var(--qe-paper-surface) !important;
-}
-
-body.mypdf-editorial .faq-item.border-gray-700 {
-  border-color: var(--qe-hairline) !important;
-}
-
-body.mypdf-editorial .faq-question .text-white {
-  color: var(--qe-ink) !important;
-}
-
-body.mypdf-editorial .faq-answer .text-gray-400,
-body.mypdf-editorial .faq-answer p {
-  color: #475569 !important;
-}
-
-body.mypdf-editorial .faq-item .faq-icon {
-  color: #94a3b8 !important;
-}
-
-body.mypdf-editorial .faq-item.open .faq-question {
-  color: var(--qe-primary) !important;
-}
-
-body.mypdf-editorial .faq-answer a.text-indigo-400 {
-  color: var(--qe-primary) !important;
-}
-
-body.mypdf-editorial .testimonial-card {
-  background-color: var(--qe-paper-surface);
-  border-color: var(--qe-hairline);
-}
-
-body.mypdf-editorial .testimonial-card .text-white {
-  color: var(--qe-ink) !important;
-}
-
-body.mypdf-editorial .testimonial-card .text-gray-400 {
-  color: #475569 !important;
-}
-
-body.mypdf-editorial .testimonial-card .text-yellow-400 {
-  color: var(--qe-gold) !important;
+body.mypdf-home.compact-mode #tool-grid .tool-card.mypdf-tool-card:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--mypdf-primary) 7%,
+    var(--mypdf-page-bg)
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.mypdf-editorial .tool-card {
+  body.mypdf-home #tool-grid .tool-card {
     transition: none;
   }
 }

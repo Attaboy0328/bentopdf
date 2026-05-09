@@ -17,6 +17,7 @@ import {
   injectLanguageSwitcher,
   t,
 } from './i18n/index.js';
+import { initThemeToggle } from './theme.js';
 import {
   loadRuntimeConfig,
   isToolDisabled,
@@ -27,6 +28,7 @@ declare const __BRAND_NAME__: string;
 const init = async () => {
   await initI18n();
   await loadRuntimeConfig();
+  initThemeToggle();
   injectLanguageSwitcher();
   applyTranslations();
 
@@ -288,7 +290,7 @@ const init = async () => {
   if (dom.toolGrid) {
     dom.toolGrid.textContent = '';
 
-    const editorialHome = document.body.classList.contains('mypdf-editorial');
+    const homeToolGrid = document.body.classList.contains('mypdf-home');
 
     let collapsedCategories: string[] = [];
     try {
@@ -326,8 +328,8 @@ const init = async () => {
 
       const chevron = document.createElement('i');
       chevron.setAttribute('data-lucide', 'chevron-down');
-      chevron.className = editorialHome
-        ? 'category-chevron w-5 h-5 text-slate-500 transition-transform duration-300'
+      chevron.className = homeToolGrid
+        ? 'category-chevron w-5 h-5 mypdf-category-chevron transition-transform duration-300'
         : 'category-chevron w-5 h-5 text-gray-400 transition-transform duration-300';
 
       header.append(title, chevron);
@@ -374,8 +376,8 @@ const init = async () => {
       category.tools.forEach((tool) => {
         let toolCard: HTMLDivElement | HTMLAnchorElement;
 
-        const cardSurface = editorialHome
-          ? 'border border-[#E8E4DD] bg-[#fefdfb] shadow-sm hover:shadow-md hover:border-[#0062AD]/40'
+        const cardSurface = homeToolGrid
+          ? 'mypdf-tool-card border shadow-sm'
           : 'bg-gray-800 hover:shadow-lg';
 
         if (tool.href) {
@@ -388,20 +390,22 @@ const init = async () => {
           toolCard.dataset.toolId = getToolId(tool);
         }
 
-        const accentIcon = editorialHome ? 'text-[#0062AD]' : 'text-indigo-400';
-
         const icon = document.createElement('i');
-        icon.className = `w-10 h-10 mb-3 ${accentIcon}`;
 
         if (tool.icon.startsWith('ph-')) {
-          icon.className = `ph ${tool.icon} text-4xl mb-3 ${accentIcon}`;
+          icon.className = homeToolGrid
+            ? `tool-card-icon ph ${tool.icon} text-4xl mb-3`
+            : `ph ${tool.icon} text-4xl mb-3 text-indigo-400`;
         } else {
+          icon.className = homeToolGrid
+            ? 'tool-card-icon w-10 h-10 mb-3'
+            : 'w-10 h-10 mb-3 text-indigo-400';
           icon.setAttribute('data-lucide', tool.icon);
         }
 
         const toolName = document.createElement('h3');
-        toolName.className = editorialHome
-          ? 'font-semibold text-[#0A2540]'
+        toolName.className = homeToolGrid
+          ? 'tool-card-title font-semibold'
           : 'font-semibold text-white';
         const toolKey = toolTranslationKeys[tool.name];
         toolName.textContent = toolKey ? t(`${toolKey}.name`) : tool.name;
@@ -410,8 +414,8 @@ const init = async () => {
 
         if (tool.subtitle) {
           const toolSubtitle = document.createElement('p');
-          toolSubtitle.className = editorialHome
-            ? 'text-xs text-slate-500 mt-1 px-2'
+          toolSubtitle.className = homeToolGrid
+            ? 'tool-card-desc text-xs mt-1 px-2'
             : 'text-xs text-gray-400 mt-1 px-2';
           toolSubtitle.textContent = toolKey
             ? t(`${toolKey}.subtitle`)
