@@ -15,7 +15,7 @@ export const createLanguageSwitcher = (): HTMLElement => {
 
   const button = document.createElement('button');
   button.className = `
-    inline-flex items-center gap-1.5 text-sm font-medium
+    inline-flex items-center justify-center gap-1.5 text-sm font-medium
     bg-gray-800 text-gray-200 border border-gray-600
     px-3 py-1.5 rounded-full transition-colors duration-200
     shadow-sm hover:shadow-md hover:bg-gray-700
