@@ -40,7 +40,7 @@ export const createLanguageSwitcher = (): HTMLElement => {
 
   const dropdown = document.createElement('div');
   dropdown.className = `
-    hidden absolute right-0 mt-2 z-50
+    hidden absolute right-0 mt-2 z-[100]
     w-64 max-w-[calc(100vw-2rem)]
     rounded-lg bg-gray-800 border border-gray-700 shadow-xl
     flex flex-col overflow-hidden
@@ -155,7 +155,8 @@ export const createLanguageSwitcher = (): HTMLElement => {
     }
   });
 
-  document.addEventListener('click', () => {
+  document.addEventListener('click', (ev) => {
+    if (container.contains(ev.target as Node)) return;
     button.setAttribute('aria-expanded', 'false');
     dropdown.classList.add('hidden');
   });
@@ -171,8 +172,13 @@ export const injectLanguageSwitcher = (): void => {
     const switcher = createLanguageSwitcher();
     const dropdown = switcher.querySelector('div[role="menu"]');
     if (dropdown) {
-      dropdown.classList.remove('mt-2');
-      dropdown.classList.add('bottom-full', 'mb-2');
+      // Open upward only in the footer; in the top navbar, upward placement is
+      // off-screen. Keep default (opens below the button) for `.mypdf-nav`.
+      const inTopNav = simpleFooterLang.closest('.mypdf-nav');
+      if (!inTopNav) {
+        dropdown.classList.remove('mt-2');
+        dropdown.classList.add('bottom-full', 'mb-2');
+      }
     }
     simpleFooterLang.appendChild(switcher);
     return;
