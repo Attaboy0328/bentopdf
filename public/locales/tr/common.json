@@ -59,6 +59,10 @@
     "title": "Araçlarla",
     "toolsLabel": "Başlayın",
     "subtitle": "Dosya yükleyiciyi açmak için bir araç seçin",
+    "trustLead": "Her şey tarayıcınızda çalışır—dosyalarınız bu cihazda kalır.",
+    "trustChipTools": "100+ PDF aracı",
+    "trustChipLocal": "%100 yerel işlem",
+    "trustChipUploads": "0 sunucu yüklemesi",
     "searchPlaceholder": "Bir araç arayın (örn. 'böl', 'düzenle'...)",
     "backToTools": "Araçlara Dön",
     "firstLoadNotice": "Dönüştürme motorumuzu indirirken ilk yükleme biraz zaman alır. Sonrasında tüm yüklemeler anında gerçekleşir."

@@ -59,6 +59,10 @@
     "title": "Commencer avec",
     "toolsLabel": "Les outils",
     "subtitle": "Cliquez sur un outil pour importer vos fichiers",
+    "trustLead": "Tout s’exécute dans votre navigateur — vos fichiers restent sur cet appareil.",
+    "trustChipTools": "Plus de 100 outils PDF",
+    "trustChipLocal": "Traitement 100 % local",
+    "trustChipUploads": "0 envoi vers le serveur",
     "searchPlaceholder": "Rechercher un outil (ex. « scinder », « organiser »...)",
     "backToTools": "Retour aux outils",
     "firstLoadNotice": "Le premier chargement peut prendre quelques instants, le temps de charger notre moteur de conversion. Les prochaines fois, tout se chargera instantanément."

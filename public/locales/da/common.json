@@ -59,6 +59,10 @@
     "title": "Kom i gang med",
     "toolsLabel": "Værktøjer",
     "subtitle": "Klik på et værktøj for at åbne fil-upload",
+    "trustLead": "Alt kører i din browser—dine filer forbliver på denne enhed.",
+    "trustChipTools": "100+ PDF-værktøjer",
+    "trustChipLocal": "100 % lokal behandling",
+    "trustChipUploads": "0 server-uploads",
     "searchPlaceholder": "Søg efter et værktøj (f.eks. 'split', 'organiser'...)",
     "backToTools": "Tilbage til værktøjer",
     "firstLoadNotice": "Første indlæsning tager et øjeblik, mens vi downloader konverteringsmotoren. Derefter vil alt indlæses øjeblikkeligt."

@@ -59,6 +59,10 @@
     "title": "开始使用",
     "toolsLabel": "工具",
     "subtitle": "点击工具以打开文件上传",
+    "trustLead": "全部在浏览器内运行——文件留在本机，不上传服务器。",
+    "trustChipTools": "100+ PDF 工具",
+    "trustChipLocal": "100% 本地处理",
+    "trustChipUploads": "0 次服务器上传",
     "searchPlaceholder": "搜索工具 (例如 '合并', '分割'...)",
     "backToTools": "返回工具列表",
     "firstLoadNotice": "首次加载需要一点时间，因为我们正在下载转换引擎。之后所有加载将即时完成。"

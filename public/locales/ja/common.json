@@ -59,6 +59,10 @@
     "title": "始めましょう",
     "toolsLabel": "ツール",
     "subtitle": "ツールをクリックしてファイルアップローダーを開きます",
+    "trustLead": "すべてブラウザ内で処理—ファイルはこの端末に留まります。",
+    "trustChipTools": "100以上のPDFツール",
+    "trustChipLocal": "100%ローカル処理",
+    "trustChipUploads": "サーバーへのアップロード0回",
     "searchPlaceholder": "ツールを検索します（例: 「分割」、「整理」など）",
     "backToTools": "ツールに戻る",
     "firstLoadNotice": "変換エンジンをダウンロードするため最初の読み込みには少し時間がかかります。その後、すべての読み込みは瞬時に行われます。"

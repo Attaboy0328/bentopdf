@@ -34,19 +34,15 @@
   }
 }
 
-@theme {
-  --font-sans: 'DM Sans', ui-sans-serif, system-ui;
-  --font-dancing: 'Dancing Script', cursive;
-  --font-vibes: 'Great Vibes', cursive;
-  --font-kalam: 'Kalam', cursive;
-  --font-lato: 'Lato', sans-serif;
-  --font-merriweather: 'Merriweather', serif;
-  --font-cedarville: 'Cedarville Cursive', cursive;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
@@ -761,12 +757,12 @@ input[type='number']::-webkit-outer-spin-button {
 
 .font-en {
   font-family:
-    'Inter', 'Noto Sans SC', var(--font-sans), ui-sans-serif, system-ui,
-    sans-serif;
+    var(--font-sans), 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
 }
 
 .font-num {
-  font-family: 'Inter', ui-monospace, 'SF Mono', monospace;
+  font-family:
+    ui-monospace, 'SF Mono', 'Cascadia Mono', 'Segoe UI Mono', monospace;
   font-feature-settings: 'tnum' 1;
 }
 
@@ -860,8 +856,7 @@ body.mypdf-home {
   background-color: var(--mypdf-page-bg);
   color: var(--mypdf-muted);
   font-family:
-    'Inter', 'Noto Sans SC', var(--font-sans), ui-sans-serif, system-ui,
-    sans-serif;
+    var(--font-sans), 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
 }
 
 .mypdf-nav {
@@ -986,12 +981,45 @@ nav.bg-gray-800 .mypdf-brand-raster--dark {
   color: var(--mypdf-muted);
 }
 
-.mypdf-stat-num {
-  color: var(--mypdf-primary);
+.mypdf-trust-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
 }
 
-.mypdf-stat-label {
+.mypdf-trust-lead {
+  margin: 0;
+  max-width: 42ch;
+  font-size: 0.9375rem;
+  line-height: 1.55;
   color: var(--mypdf-muted);
+}
+
+.mypdf-trust-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.mypdf-trust-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--mypdf-hairline);
+  background-color: color-mix(
+    in srgb,
+    var(--mypdf-surface) 85%,
+    var(--mypdf-page-bg)
+  );
+  color: var(--mypdf-ink);
 }
 
 .mypdf-hairline {

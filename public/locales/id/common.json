@@ -59,6 +59,10 @@
     "title": "Mulai dengan",
     "toolsLabel": "Alat",
     "subtitle": "Klik alat untuk membuka pengunggah file",
+    "trustLead": "Semua berjalan di browser—file Anda tetap di perangkat ini.",
+    "trustChipTools": "100+ alat PDF",
+    "trustChipLocal": "100% pemrosesan lokal",
+    "trustChipUploads": "0 unggahan ke server",
     "searchPlaceholder": "Cari alat (contoh, 'pisah', 'organisir'...)",
     "backToTools": "Kembali ke Alat",
     "firstLoadNotice": "Pemuatan pertama memerlukan waktu sebentar karena kami mengunduh mesin konversi kami. Setelah itu, semua pemuatan akan instan."

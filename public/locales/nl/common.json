@@ -59,6 +59,10 @@
     "title": "Aan de slag met",
     "toolsLabel": "Tools",
     "subtitle": "Klik een tool om de bestandslader te openen",
+    "trustLead": "Alles draait in je browser — je bestanden blijven op dit apparaat.",
+    "trustChipTools": "100+ PDF-tools",
+    "trustChipLocal": "100% lokaal verwerken",
+    "trustChipUploads": "0 server-uploads",
     "searchPlaceholder": "Zoek een tool (bijv. 'splitsen', 'organiseren',…)",
     "backToTools": "Terug naar Tools",
     "firstLoadNotice": "De eerste keer duurt het even om onze machinerie te laden. Daarna laadt alles direct."

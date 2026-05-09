@@ -59,6 +59,10 @@
     "title": "Inizia con",
     "toolsLabel": "Strumenti",
     "subtitle": "Clicca su uno strumento per aprire il caricatore di file",
+    "trustLead": "Tutto gira nel browser: i file restano su questo dispositivo.",
+    "trustChipTools": "Oltre 100 strumenti PDF",
+    "trustChipLocal": "Elaborazione 100% locale",
+    "trustChipUploads": "0 caricamenti sul server",
     "searchPlaceholder": "Cerca uno strumento (es. \"split\", \"organizza\"...)",
     "backToTools": "Torna agli strumenti",
     "firstLoadNotice": "Il primo caricamento richiede qualche istante mentre scarichiamo il motore di conversione. Dopo di ciò, tutti i caricamenti saranno immediati."

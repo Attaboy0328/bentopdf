@@ -59,6 +59,10 @@
     "title": "Kom igång med",
     "toolsLabel": "verktyg",
     "subtitle": "Klicka på ett verktyg för att öppna filväljaren",
+    "trustLead": "Allt körs i din webbläsare—dina filer stannar på den här enheten.",
+    "trustChipTools": "100+ PDF-verktyg",
+    "trustChipLocal": "100 % lokal bearbetning",
+    "trustChipUploads": "0 serveruppladdningar",
     "searchPlaceholder": "Sök efter ett verktyg (t.ex. 'dela', 'organisera'...)",
     "backToTools": "Tillbaka till verktyg",
     "firstLoadNotice": "Första laddningen tar ett ögonblick eftersom vi hämtar vår konverteringsmotor. Därefter blir alla laddningar omedelbara."

@@ -6,10 +6,19 @@
       (function () {
         try {
           var t = localStorage.getItem('mypdf-theme');
-          document.documentElement.dataset.theme =
-            t === 'light' ? 'light' : 'dark';
+          var theme = t === 'light' ? 'light' : 'dark';
+          document.documentElement.dataset.theme = theme;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) {
+            meta.setAttribute(
+              'content',
+              theme === 'dark' ? '#0b1220' : '#f9f8f6'
+            );
+          }
         } catch (e) {
           document.documentElement.dataset.theme = 'dark';
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', '#0b1220');
         }
       })();
     </script>
@@ -24,7 +33,7 @@
     />
     <meta
       name="description"
-      content="Free online PDF tools ? merge, split, compress, convert PDFs. 100% browser-based. No signup. Unlimited files. Privacy-first. Works offline. 100+ PDF tools."
+      content="Free online PDF tools: merge, split, compress, convert PDFs. 100% browser-based. No signup. Unlimited files. Privacy-first. Works offline. 100+ PDF tools."
     />
     <meta
       name="keywords"
@@ -108,7 +117,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -146,36 +155,36 @@
             Click a tool to open the file uploader
           </p>
           <div class="mypdf-hairline max-w-lg mx-auto mb-10 md:mb-12"></div>
-          <div
-            class="flex flex-wrap justify-center gap-x-10 gap-y-6 md:gap-x-16 text-sm md:text-base"
-          >
-            <div class="text-center min-w-[7rem]">
-              <div
-                class="mypdf-stat-num font-num text-2xl md:text-3xl font-bold"
+          <div class="mypdf-trust-strip max-w-2xl mx-auto mb-2">
+            <p class="mypdf-trust-lead" data-i18n="tools.trustLead">
+              Everything runs in your browser—your files stay on this device.
+            </p>
+            <div
+              class="mypdf-trust-chips"
+              role="list"
+              aria-label="Privacy highlights"
+            >
+              <span
+                class="mypdf-trust-chip"
+                role="listitem"
+                data-i18n="tools.trustChipTools"
               >
-                100+
-              </div>
-              <div class="mt-1 font-medium mypdf-stat-label">PDF tools</div>
-            </div>
-            <div class="text-center min-w-[7rem]">
-              <div
-                class="mypdf-stat-num font-num text-2xl md:text-3xl font-bold"
+                100+ PDF tools
+              </span>
+              <span
+                class="mypdf-trust-chip"
+                role="listitem"
+                data-i18n="tools.trustChipLocal"
               >
-                100%
-              </div>
-              <div class="mt-1 font-medium mypdf-stat-label">
-                Local processing
-              </div>
-            </div>
-            <div class="text-center min-w-[7rem]">
-              <div
-                class="mypdf-stat-num font-num text-2xl md:text-3xl font-bold"
+                100% local processing
+              </span>
+              <span
+                class="mypdf-trust-chip"
+                role="listitem"
+                data-i18n="tools.trustChipUploads"
               >
-                0
-              </div>
-              <div class="mt-1 font-medium mypdf-stat-label">
-                Server uploads
-              </div>
+                0 server uploads
+              </span>
             </div>
           </div>
         </header>

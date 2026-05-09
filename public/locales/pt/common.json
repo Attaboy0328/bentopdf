@@ -59,6 +59,10 @@
     "title": "Comece com as",
     "toolsLabel": "Ferramentas",
     "subtitle": "Clique em uma ferramenta para abrir o seletor de arquivos",
+    "trustLead": "Tudo roda no seu navegador — seus arquivos ficam neste dispositivo.",
+    "trustChipTools": "100+ ferramentas PDF",
+    "trustChipLocal": "Processamento 100% local",
+    "trustChipUploads": "0 envios ao servidor",
     "searchPlaceholder": "Buscar ferramenta (ex: 'dividir', 'organizar'...)",
     "backToTools": "Voltar para Ferramentas",
     "firstLoadNotice": "O primeiro carregamento demora um momento enquanto baixamos nosso mecanismo de conversão. Depois disso, todos os carregamentos serão instantâneos."

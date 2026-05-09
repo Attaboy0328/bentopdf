@@ -59,6 +59,10 @@
     "title": "Get Started with",
     "toolsLabel": "Tools",
     "subtitle": "Click a tool to open the file uploader",
+    "trustLead": "Everything runs in your browser—your files stay on this device.",
+    "trustChipTools": "100+ PDF tools",
+    "trustChipLocal": "100% local processing",
+    "trustChipUploads": "0 server uploads",
     "searchPlaceholder": "Search for a tool (e.g., 'split', 'organize'...)",
     "backToTools": "Back to Tools",
     "firstLoadNotice": "First load takes a moment as we download our conversion engine. After that, all loads will be instant."

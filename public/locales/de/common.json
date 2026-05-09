@@ -59,6 +59,10 @@
     "title": "Starte mit",
     "toolsLabel": "Tools",
     "subtitle": "Klick auf ein Tool, um den Datei-Uploader zu öffnen",
+    "trustLead": "Alles läuft im Browser—deine Dateien bleiben auf diesem Gerät.",
+    "trustChipTools": "100+ PDF-Tools",
+    "trustChipLocal": "100 % lokale Verarbeitung",
+    "trustChipUploads": "0 Server-Uploads",
     "searchPlaceholder": "Tool suchen (z.B. 'teilen', 'organisieren'...)",
     "backToTools": "Zurück zu den Tools",
     "firstLoadNotice": "Der erste Ladevorgang dauert einen Moment, da wir unsere Konvertierungs-Engine herunterladen. Danach erfolgt jedes Laden sofort."

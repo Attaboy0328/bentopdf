@@ -59,6 +59,10 @@
     "title": "시작하기",
     "toolsLabel": "도구",
     "subtitle": "도구를 클릭하면 파일 업로더가 열립니다",
+    "trustLead": "모든 처리가 브라우저에서 이루어집니다—파일은 이 기기에만 남습니다.",
+    "trustChipTools": "100개 이상의 PDF 도구",
+    "trustChipLocal": "100% 로컬 처리",
+    "trustChipUploads": "서버 업로드 0회",
     "searchPlaceholder": "도구 검색 (예: '분할', '병합'...)",
     "backToTools": "도구 목록으로 돌아가기",
     "firstLoadNotice": "처음에는 변환 엔진을 다운로드하느라 시간이 조금 걸릴 수 있습니다. 이후에는 바로 실행됩니다."

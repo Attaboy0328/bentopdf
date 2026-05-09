@@ -1,8 +1,8 @@
-<footer class="mt-8 border-t border-gray-800/80 py-6 text-center text-xs text-gray-500">
+<footer class="mypdf-site-footer mt-8 border-t py-6 text-center text-xs">
   <p {{#unless footerText}}data-i18n="footer.copyright"{{/unless}}>
     {{#if footerText}}{{footerText}}{{else}}© 2026 MyPDF. All rights reserved.{{/if}}
   </p>
-  <p class="mt-2 text-gray-600">
+  <p class="mypdf-footer-version mt-2">
     <span data-i18n="footer.version">Version</span>
     <span id="app-version">{{appVersion}}</span>
   </p>
