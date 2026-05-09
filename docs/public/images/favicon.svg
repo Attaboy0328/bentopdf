@@ -1,7 +1,12 @@
-<svg width="166" height="166" viewBox="0 0 166 166" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g transform="translate(40, 0)">
-<path d="M56.7848 80.9116L0 25.6211L24.8434 1.43151C26.8037 -0.47717 29.9814 -0.47717 31.9414 1.43151L85.177 53.2662L56.7848 80.9116Z" fill="#A5B4FC"/>
-<path d="M-1.30805e-05 80.7335L21.2939 101.467L42.5878 80.7335L21.2939 60L-1.30805e-05 80.7335Z" fill="#E0E7FF"/>
-<path d="M56.7848 83L81.6279 107.19C83.5881 109.098 83.5881 112.192 81.6279 114.101L28.3925 165.936L0 138.29L56.7848 83Z" fill="#6366F1"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">MyPDF icon</title>
+  <desc id="desc">Interlocking red and gray PDF pages icon.</desc>
+  <g transform="translate(16 17)">
+    <path d="M76 30 H122 C130.8 30 138 37.2 138 46 V110 C138 118.8 130.8 126 122 126 H58 C49.2 126 42 118.8 42 110 V64 C42 55.2 49.2 48 58 48 H76 Z" fill="#8B929D"/>
+    <path d="M18 0 H82 L118 36 V92 C118 100.8 110.8 108 102 108 H18 C9.2 108 2 100.8 2 92 V16 C2 7.2 9.2 0 18 0 Z" fill="#EF1D1D"/>
+    <path d="M82 0 V31 C82 34.3 84.7 37 88 37 H118 Z" fill="#EF1D1D"/>
+    <path d="M82 0 V31 C82 34.3 84.7 37 88 37 H118" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M43 56 H89 C94.5 56 99 60.5 99 66 V108 H56 V88 C56 82.5 51.5 78 46 78 H43 C37.5 78 33 73.5 33 68 V66 C33 60.5 37.5 56 43 56 Z" fill="#FFFFFF"/>
+    <path d="M71 78 H99 V108 H71 Z" fill="#8B929D"/>
+  </g>
 </svg>
