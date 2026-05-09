@@ -158,15 +158,11 @@ const init = async () => {
     }))
     .filter((category) => category.tools.length > 0);
 
-  const HOME_NAVIGABLE_TOOL_IDS = new Set(['pdf-workflow', 'pdf-multi-tool']);
-
   const headerNavEl = document.getElementById('mypdf-header-category-nav');
   if (headerNavEl && filteredCategories.length > 0) {
-    const homeToolGrid = document.body.classList.contains('mypdf-home');
     mountHeaderCategoryNav({
       filteredCategories,
       t,
-      allowedToolIds: homeToolGrid ? HOME_NAVIGABLE_TOOL_IDS : undefined,
     });
   }
 
@@ -259,19 +255,10 @@ const init = async () => {
           ? 'mypdf-tool-card border shadow-sm'
           : 'bg-gray-800 hover:shadow-lg';
 
-        const toolIdForNav = tool.id || getToolId(tool);
-        const canOpenTool =
-          !homeToolGrid || HOME_NAVIGABLE_TOOL_IDS.has(toolIdForNav);
-
-        if (tool.href && canOpenTool) {
+        if (tool.href) {
           toolCard = document.createElement('a');
           toolCard.href = tool.href;
           toolCard.className = `tool-card block rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center no-underline transition duration-200 ${cardSurface}`;
-        } else if (homeToolGrid && tool.href && !canOpenTool) {
-          toolCard = document.createElement('div');
-          toolCard.className = `tool-card block rounded-xl p-4 flex flex-col items-center justify-center text-center transition duration-200 ${cardSurface} mypdf-tool-card--locked`;
-          toolCard.dataset.toolId = tool.id || getToolId(tool);
-          toolCard.setAttribute('aria-disabled', 'true');
         } else {
           toolCard = document.createElement('div');
           toolCard.className = `tool-card rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center transition duration-200 ${cardSurface}`;

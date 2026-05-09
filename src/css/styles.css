@@ -1260,24 +1260,6 @@ body.mypdf-home #tool-grid a.tool-card.mypdf-tool-card:focus-visible {
     0 8px 20px -12px color-mix(in srgb, var(--mypdf-primary) 28%, transparent);
 }
 
-body.mypdf-home #tool-grid .tool-card.mypdf-tool-card.mypdf-tool-card--locked,
-body.mypdf-home #tool-grid .tool-card.mypdf-tool-card--locked {
-  opacity: 0.42;
-  cursor: not-allowed;
-  pointer-events: none;
-  transform: none;
-}
-
-body.mypdf-home
-  #tool-grid
-  .tool-card.mypdf-tool-card.mypdf-tool-card--locked:hover,
-body.mypdf-home #tool-grid .tool-card.mypdf-tool-card--locked:hover {
-  transform: none;
-  background-color: transparent;
-  border-color: var(--mypdf-hairline);
-  box-shadow: none;
-}
-
 body.mypdf-home #tool-grid .tool-card-icon {
   color: var(--mypdf-primary);
 }

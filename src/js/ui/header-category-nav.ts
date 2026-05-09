@@ -17,14 +17,12 @@ export type HeaderNavCategory = {
 export type MountHeaderCategoryNavOptions = {
   filteredCategories: HeaderNavCategory[];
   t: (key: string) => string;
-  allowedToolIds?: Set<string> | null;
 };
 
-/** Optional allowlist: when set, only those tool ids are links; others are inert labels. */
 export function mountHeaderCategoryNav(
   options: MountHeaderCategoryNavOptions
 ): void {
-  const { filteredCategories, t, allowedToolIds } = options;
+  const { filteredCategories, t } = options;
 
   const headerNav = document.getElementById('mypdf-header-category-nav');
   if (!headerNav || filteredCategories.length === 0) return;
@@ -43,11 +41,6 @@ export function mountHeaderCategoryNav(
         const btn = el.querySelector('.mypdf-header-nav-trigger');
         if (btn) btn.setAttribute('aria-expanded', 'false');
       });
-  };
-
-  const navigable = (toolId: string) => {
-    if (allowedToolIds == null) return true;
-    return allowedToolIds.has(toolId);
   };
 
   filteredCategories.forEach((category) => {
@@ -71,21 +64,12 @@ export function mountHeaderCategoryNav(
       const tk = toolTranslationKeys[tool.name];
       const label = tk ? t(`${tk}.name`) : tool.name;
 
-      if (navigable(tool.id)) {
-        const link = document.createElement('a');
-        link.href = tool.href;
-        link.className = 'mypdf-header-nav-link';
-        link.setAttribute('role', 'menuitem');
-        link.textContent = label;
-        panel.appendChild(link);
-      } else {
-        const span = document.createElement('span');
-        span.className =
-          'mypdf-header-nav-link mypdf-header-nav-link--disabled block cursor-not-allowed opacity-45 select-none';
-        span.setAttribute('aria-disabled', 'true');
-        span.textContent = label;
-        panel.appendChild(span);
-      }
+      const link = document.createElement('a');
+      link.href = tool.href;
+      link.className = 'mypdf-header-nav-link';
+      link.setAttribute('role', 'menuitem');
+      link.textContent = label;
+      panel.appendChild(link);
     });
 
     if (prefersCoarsePointer) {

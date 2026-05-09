@@ -32,7 +32,6 @@ async function init(): Promise<void> {
   mountHeaderCategoryNav({
     filteredCategories,
     t,
-    allowedToolIds: undefined,
   });
 
   rewriteLinks();
