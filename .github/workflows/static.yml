@@ -1,4 +1,7 @@
-# Build on push to main and deploy static assets to Cloudflare Pages (bentopdf-cf).
+# Build on push to main and deploy static assets to Cloudflare Pages.
+#
+# Pages project name must match Cloudflare exactly: Workers & Pages → select project → name in sidebar.
+# Override via repository variable CLOUDFLARE_PAGES_PROJECT_NAME if different from default "mypdf".
 #
 # Required GitHub repository secrets (Settings → Secrets and variables → Actions → Secrets):
 #   CLOUDFLARE_API_TOKEN   — Create at Cloudflare Dashboard → My Profile → API Tokens →
@@ -7,8 +10,9 @@
 #   CLOUDFLARE_ACCOUNT_ID  — Cloudflare dashboard right sidebar (Account ID).
 #
 # Recommended repository variables (Settings → Variables → Actions):
-#   SITE_URL               — Public origin for SEO scripts, e.g. https://mypdf.282913.xyz
-#   BASE_URL               — Vite base path; use "/" for apex Pages deploy (or "/repo/" if needed).
+#   CLOUDFLARE_PAGES_PROJECT_NAME — Optional. Defaults to mypdf if unset.
+#   SITE_URL                      — Public origin for SEO scripts, e.g. https://mypdf.282913.xyz
+#   BASE_URL                      — Vite base path; use "/" for apex Pages deploy (or "/repo/" if needed).
 #
 # If your Pages project is also connected to Git in the Cloudflare dashboard, pick ONE source:
 # either this workflow OR Cloudflare Git integration — otherwise you get duplicate builds.
@@ -52,9 +56,19 @@ jobs:
       - name: Build distribution
         run: npm run build
 
+      - name: Resolve Cloudflare Pages project name
+        id: cfproject
+        run: |
+          NAME="${CLOUDFLARE_PAGES_PROJECT_NAME}"
+          if [ -z "$NAME" ]; then NAME="mypdf"; fi
+          echo "Using Cloudflare Pages project: $NAME"
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+        env:
+          CLOUDFLARE_PAGES_PROJECT_NAME: ${{ vars.CLOUDFLARE_PAGES_PROJECT_NAME }}
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=bentopdf-cf
+          command: pages deploy dist --project-name=${{ steps.cfproject.outputs.name }}
