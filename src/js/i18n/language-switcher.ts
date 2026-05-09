@@ -164,12 +164,17 @@ export const createLanguageSwitcher = (): HTMLElement => {
 };
 
 export const injectLanguageSwitcher = (): void => {
-  const simpleModeContainer = document.getElementById(
-    'simple-mode-language-switcher'
-  );
-  if (simpleModeContainer) {
+  const simpleFooterLang =
+    document.getElementById('simple-mode-lang-switcher') ||
+    document.getElementById('simple-mode-language-switcher');
+  if (simpleFooterLang) {
     const switcher = createLanguageSwitcher();
-    simpleModeContainer.appendChild(switcher);
+    const dropdown = switcher.querySelector('div[role="menu"]');
+    if (dropdown) {
+      dropdown.classList.remove('mt-2');
+      dropdown.classList.add('bottom-full', 'mb-2');
+    }
+    simpleFooterLang.appendChild(switcher);
     return;
   }
 

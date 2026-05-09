@@ -474,7 +474,7 @@ export default defineConfig(() => {
         context: {
           baseUrl: (process.env.BASE_URL || '/').replace(/\/?$/, '/'),
           simpleMode: process.env.SIMPLE_MODE === 'true',
-          brandName: process.env.VITE_BRAND_NAME || '',
+          brandName: process.env.VITE_BRAND_NAME || 'MyPDF',
           brandLogo: process.env.VITE_BRAND_LOGO || '',
           footerText: process.env.VITE_FOOTER_TEXT || '',
           appVersion: process.env.npm_package_version || 'Unknown',
@@ -519,7 +519,7 @@ export default defineConfig(() => {
     ],
     define: {
       __SIMPLE_MODE__: JSON.stringify(process.env.SIMPLE_MODE === 'true'),
-      __BRAND_NAME__: JSON.stringify(process.env.VITE_BRAND_NAME || ''),
+      __BRAND_NAME__: JSON.stringify(process.env.VITE_BRAND_NAME || 'MyPDF'),
       __DISABLED_TOOLS__: JSON.stringify(
         (process.env.DISABLE_TOOLS || '')
           .split(',')
