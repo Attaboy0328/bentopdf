@@ -828,6 +828,16 @@ const baseCategories = [
   },
 ];
 
+export const categoryAnchorIds: Record<string, string> = {
+  'Popular Tools': 'cat-popular',
+  'Edit & Annotate': 'cat-edit-annotate',
+  'Convert to PDF': 'cat-convert-to-pdf',
+  'Convert from PDF': 'cat-convert-from-pdf',
+  'Organize & Manage': 'cat-organize',
+  'Optimize & Repair': 'cat-optimize',
+  'Secure PDF': 'cat-secure',
+};
+
 const getToolIdFromHref = (href: string): string => {
   const match = href.match(/\/([^/]+)\.html$/);
   return match?.[1] ?? href;

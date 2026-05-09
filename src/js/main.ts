@@ -1,4 +1,4 @@
-import { categories } from './config/tools.js';
+import { categories, categoryAnchorIds } from './config/tools.js';
 import { dom, switchView, hideAlert } from './ui.js';
 import { ShortcutsManager } from './logic/shortcuts.js';
 import { createIcons, icons } from 'lucide';
@@ -317,6 +317,8 @@ const init = async () => {
     filteredCategories.forEach((category) => {
       const categoryGroup = document.createElement('div');
       categoryGroup.className = 'category-group col-span-full';
+      const anchorId = categoryAnchorIds[category.name];
+      if (anchorId) categoryGroup.id = anchorId;
 
       const header = document.createElement('button');
       header.className = 'category-header';
