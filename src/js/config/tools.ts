@@ -36,6 +36,18 @@ const baseCategories = [
         subtitle: 'Reduce the file size of your PDF.',
       },
       {
+        href: import.meta.env.BASE_URL + 'ocr-pdf.html',
+        name: 'OCR PDF',
+        icon: 'ph-barcode',
+        subtitle: 'Make a PDF searchable and copyable.',
+      },
+      {
+        href: import.meta.env.BASE_URL + 'decrypt-pdf.html',
+        name: 'Decrypt PDF',
+        icon: 'ph-lock-open',
+        subtitle: 'Unlock PDF by removing password protection.',
+      },
+      {
         href: import.meta.env.BASE_URL + 'edit-pdf.html',
         name: 'PDF Editor',
         icon: 'ph-pencil-simple',
