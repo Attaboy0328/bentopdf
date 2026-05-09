@@ -74,7 +74,7 @@ function injectOrganizationLd(document) {
     '@type': 'Organization',
     name: 'MyPDF',
     url: SITE_URL,
-    logo: `${SITE_URL}/images/favicon.svg`,
+    logo: `${SITE_URL}/images/mypdf-icon.svg?v=3`,
     sameAs: [
       'https://github.com/alam00000/bentopdf',
       'https://x.com/BentoPDF',

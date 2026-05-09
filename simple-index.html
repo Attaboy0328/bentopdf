@@ -33,25 +33,29 @@
     <meta name="apple-mobile-web-app-title" content="PDF Tools" />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{{baseUrl}}images/mypdf-icon.svg?v=3"
+    />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="/images/favicon-192x192.png"
+      href="{{baseUrl}}images/favicon-192x192.png?v=3"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="512x512"
-      href="/images/favicon-512x512.png"
+      href="{{baseUrl}}images/favicon-512x512.png?v=3"
     />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="/images/apple-touch-icon.png"
+      href="{{baseUrl}}images/apple-touch-icon.png?v=3"
     />
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="{{baseUrl}}favicon.ico?v=3" sizes="32x32" />
 
     <link href="src/css/styles.css" rel="stylesheet" />
   </head>
@@ -227,7 +231,7 @@
           <div>
             <div class="flex items-center mb-2">
               <img
-                src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon.svg{{/if}}"
+                src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/mypdf-icon.svg{{/if}}"
                 alt="{{#if brandName}}{{brandName}}{{else}}Bento PDF{{/if}} Logo"
                 class="h-8 w-8 mr-2"
               />
