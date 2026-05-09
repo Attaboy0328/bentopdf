@@ -1,68 +1,60 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+# Build on push to main and deploy static assets to Cloudflare Pages (bentopdf-cf).
+#
+# Required GitHub repository secrets (Settings → Secrets and variables → Actions → Secrets):
+#   CLOUDFLARE_API_TOKEN   — Create at Cloudflare Dashboard → My Profile → API Tokens →
+#                            template "Edit Cloudflare Workers" or custom with Account +
+#                            Cloudflare Pages → Edit (see Cloudflare docs for CI tokens).
+#   CLOUDFLARE_ACCOUNT_ID  — Cloudflare dashboard right sidebar (Account ID).
+#
+# Recommended repository variables (Settings → Variables → Actions):
+#   SITE_URL               — Public origin for SEO scripts, e.g. https://mypdf.282913.xyz
+#   BASE_URL               — Vite base path; use "/" for apex Pages deploy (or "/repo/" if needed).
+#
+# If your Pages project is also connected to Git in the Cloudflare dashboard, pick ONE source:
+# either this workflow OR Cloudflare Git integration — otherwise you get duplicate builds.
+
+name: Deploy to Cloudflare Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: "pages"
+  group: cloudflare-pages-${{ github.ref }}
   cancel-in-progress: false
 
+permissions:
+  contents: read
 
-# Configure these variables under your repo settings.
-# You will likely need to set BASE_URL to be the name of your repo eg 'bentopdf'
-# Recommended GitHub Actions variable: SITE_URL = https://bentopdf-cf.pages.dev (your Cloudflare Pages URL)
 env:
   SIMPLE_MODE: ${{ vars.SIMPLE_MODE }}
   BASE_URL: ${{ vars.BASE_URL }}/
   SITE_URL: ${{ vars.SITE_URL }}
-  HUSKY: 0
+  HUSKY: "0"
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: npm
+
       - name: Install dependencies
         run: npm ci
-      - name: Build distribution
-        run: |
-          # export SIMPLE_MODE=${{ vars.SIMPLE_MODE }}
-          #  export BASE_URL=${{ vars.BASE_URL }}/ 
-          npm run build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Build distribution
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
         with:
-          # Upload entire repository
-          path: dist
-          name: github-pages-deployment
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          artifact_name: github-pages-deployment
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=bentopdf-cf
