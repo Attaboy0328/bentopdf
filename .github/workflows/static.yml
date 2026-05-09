@@ -15,7 +15,8 @@
 # Optional repository variables:
 #   CLOUDFLARE_PAGES_PROJECT_NAME — Optional. Defaults to mypdf if unset.
 #   SITE_URL                      — Public origin for SEO, e.g. https://mypdf.282913.xyz
-#   BASE_URL                      — Vite base path; "/" for apex Pages deploy.
+#   BASE_URL                      — MUST match how the site is served. Cloudflare Pages on a custom domain at
+#                                     site root: leave unset or use "/". Do NOT use "/RepoName/" from GitHub Pages.
 #   VITE_LIBREOFFICE_BASE_URL — HTTPS prefix where libreoffice-wasm lives (e.g. R2 public bucket URL).
 #                               Set at build time for Office-related tools. If unset, deploy works but LO tools may 404 until set.
 #
@@ -38,7 +39,8 @@ permissions:
 
 env:
   SIMPLE_MODE: ${{ vars.SIMPLE_MODE }}
-  BASE_URL: ${{ vars.BASE_URL }}/
+  # Single segment for Vite (vite.config normalizes trailing slash). Leave unset for root deploy on CF Pages.
+  BASE_URL: ${{ vars.BASE_URL }}
   SITE_URL: ${{ vars.SITE_URL }}
   VITE_LIBREOFFICE_BASE_URL: ${{ vars.VITE_LIBREOFFICE_BASE_URL }}
   HUSKY: "0"
