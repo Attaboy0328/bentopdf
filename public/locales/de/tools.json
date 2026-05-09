@@ -1122,7 +1122,7 @@
     "resetWithDefaults": "Benutzerdefinierte Überschreibungen wurden entfernt. Vorkonfigurierte Standardwerte sind aktiv.",
     "resetNoDefaults": "Alle Konfigurationen und zwischengespeicherten Module wurden gelöscht.",
     "licenseTitle": "Lizenzhinweis:",
-    "licenseDescription": "Die externen Module (PyMuPDF, Ghostscript, CoherentPDF) sind unter AGPL-3.0 oder ähnlichen Copyleft-Lizenzen lizenziert. Durch das Konfigurieren und Verwenden dieser Module stimmen Sie den jeweiligen Lizenzbedingungen zu. BentoPDF ist mit jeder Ghostscript-WASM- und PyMuPDF-WASM-Implementierung kompatibel, die der erwarteten Schnittstelle folgt."
+    "licenseDescription": "Die externen Module (PyMuPDF, Ghostscript, CoherentPDF) sind unter AGPL-3.0 oder ähnlichen Copyleft-Lizenzen lizenziert. Durch das Konfigurieren und Verwenden dieser Module stimmen Sie den jeweiligen Lizenzbedingungen zu. MyPDF ist mit jeder Ghostscript-WASM- und PyMuPDF-WASM-Implementierung kompatibel, die der erwarteten Schnittstelle folgt."
   },
   "pdfOverlay": {
     "name": "PDF-Überlagerung",

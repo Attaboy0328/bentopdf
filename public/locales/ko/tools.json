@@ -1123,7 +1123,7 @@
     "resetWithDefaults": "사용자 지정 재정의가 지워졌습니다. 사전 구성된 기본값이 활성화되었습니다.",
     "resetNoDefaults": "모든 구성 및 캐시된 모듈이 지워졌습니다.",
     "licenseTitle": "라이선스 공지:",
-    "licenseDescription": "외부 모듈(PyMuPDF, Ghostscript, CoherentPDF)은 AGPL-3.0 또는 유사한 카피레프트 라이선스에 따라 라이선스가 부여됩니다. 이러한 모듈을 구성하고 사용함으로써 해당 라이선스 조건에 동의하게 됩니다. BentoPDF는 예상되는 인터페이스를 따르는 모든 Ghostscript WASM 및 PyMuPDF WASM 구현과 호환됩니다."
+    "licenseDescription": "외부 모듈(PyMuPDF, Ghostscript, CoherentPDF)은 AGPL-3.0 또는 유사한 카피레프트 라이선스에 따라 라이선스가 부여됩니다. 이러한 모듈을 구성하고 사용함으로써 해당 라이선스 조건에 동의하게 됩니다. MyPDF는 예상되는 인터페이스를 따르는 모든 Ghostscript WASM 및 PyMuPDF WASM 구현과 호환됩니다."
   },
   "pdfOverlay": {
     "name": "PDF 오버레이",

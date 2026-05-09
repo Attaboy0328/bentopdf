@@ -1123,7 +1123,7 @@
     "resetWithDefaults": "Đã xóa các ghi đè tùy chỉnh. Các giá trị mặc định đã cấu hình sẵn đang hoạt động.",
     "resetNoDefaults": "Tất cả cấu hình và mô-đun được lưu trong bộ nhớ đệm đã được xóa.",
     "licenseTitle": "Thông báo giấy phép:",
-    "licenseDescription": "Các mô-đun bên ngoài (PyMuPDF, Ghostscript, CoherentPDF) được cấp phép theo AGPL-3.0 hoặc các giấy phép copyleft tương tự. Bằng cách cấu hình và sử dụng các mô-đun này, bạn đồng ý với các điều khoản giấy phép tương ứng. BentoPDF tương thích với bất kỳ triển khai Ghostscript WASM và PyMuPDF WASM nào tuân theo giao diện mong đợi."
+    "licenseDescription": "Các mô-đun bên ngoài (PyMuPDF, Ghostscript, CoherentPDF) được cấp phép theo AGPL-3.0 hoặc các giấy phép copyleft tương tự. Bằng cách cấu hình và sử dụng các mô-đun này, bạn đồng ý với các điều khoản giấy phép tương ứng. MyPDF tương thích với bất kỳ triển khai Ghostscript WASM và PyMuPDF WASM nào tuân theo giao diện mong đợi."
   },
   "pdfOverlay": {
     "name": "Chồng PDF",

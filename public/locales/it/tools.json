@@ -1123,7 +1123,7 @@
     "resetWithDefaults": "Sovrascritture personalizzate cancellate. I valori preconfigurati sono attivi.",
     "resetNoDefaults": "Tutte le configurazioni e i moduli in cache sono stati cancellati.",
     "licenseTitle": "Avviso di licenza:",
-    "licenseDescription": "I moduli esterni (PyMuPDF, Ghostscript, CoherentPDF) sono concessi in licenza con AGPL-3.0 o licenze copyleft simili. Configurando e utilizzando questi moduli, accetti i rispettivi termini di licenza. BentoPDF è compatibile con qualsiasi implementazione WASM Ghostscript e PyMuPDF che segua l'interfaccia prevista."
+    "licenseDescription": "I moduli esterni (PyMuPDF, Ghostscript, CoherentPDF) sono concessi in licenza con AGPL-3.0 o licenze copyleft simili. Configurando e utilizzando questi moduli, accetti i rispettivi termini di licenza. MyPDF è compatibile con qualsiasi implementazione WASM Ghostscript e PyMuPDF che segua l'interfaccia prevista."
   },
   "pdfOverlay": {
     "name": "Sovrapposizione PDF",

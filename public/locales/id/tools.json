@@ -1123,7 +1123,7 @@
     "resetWithDefaults": "Penimpaan kustom dihapus. Default yang dikonfigurasi sebelumnya aktif.",
     "resetNoDefaults": "Semua konfigurasi dan modul yang di-cache telah dihapus.",
     "licenseTitle": "Pemberitahuan Lisensi:",
-    "licenseDescription": "Modul eksternal (PyMuPDF, Ghostscript, CoherentPDF) dilisensikan di bawah AGPL-3.0 atau lisensi copyleft serupa. Dengan mengonfigurasi dan menggunakan modul-modul ini, Anda menyetujui ketentuan lisensi masing-masing. BentoPDF kompatibel dengan implementasi Ghostscript WASM dan PyMuPDF WASM apa pun yang mengikuti antarmuka yang diharapkan."
+    "licenseDescription": "Modul eksternal (PyMuPDF, Ghostscript, CoherentPDF) dilisensikan di bawah AGPL-3.0 atau lisensi copyleft serupa. Dengan mengonfigurasi dan menggunakan modul-modul ini, Anda menyetujui ketentuan lisensi masing-masing. MyPDF kompatibel dengan implementasi Ghostscript WASM dan PyMuPDF WASM apa pun yang mengikuti antarmuka yang diharapkan."
   },
   "pdfOverlay": {
     "name": "Overlay PDF",

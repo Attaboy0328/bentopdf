@@ -1123,7 +1123,7 @@
     "resetWithDefaults": "تم مسح التجاوزات المخصصة. الإعدادات الافتراضية المهيأة مسبقًا نشطة.",
     "resetNoDefaults": "تم مسح جميع التكوينات والوحدات المخزنة مؤقتًا.",
     "licenseTitle": "إشعار الترخيص:",
-    "licenseDescription": "الوحدات الخارجية (PyMuPDF، Ghostscript، CoherentPDF) مرخصة بموجب AGPL-3.0 أو تراخيص copyleft مماثلة. بتكوين واستخدام هذه الوحدات، فإنك توافق على شروط الترخيص الخاصة بكل منها. BentoPDF متوافق مع أي تنفيذ Ghostscript WASM وPyMuPDF WASM يتبع الواجهة المتوقعة."
+    "licenseDescription": "الوحدات الخارجية (PyMuPDF، Ghostscript، CoherentPDF) مرخصة بموجب AGPL-3.0 أو تراخيص copyleft مماثلة. بتكوين واستخدام هذه الوحدات، فإنك توافق على شروط الترخيص الخاصة بكل منها. MyPDF متوافق مع أي تنفيذ Ghostscript WASM وPyMuPDF WASM يتبع الواجهة المتوقعة."
   },
   "pdfOverlay": {
     "name": "تراكب PDF",

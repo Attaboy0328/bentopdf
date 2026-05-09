@@ -53,18 +53,16 @@
     >
       <div class="container mx-auto px-4">
         <div class="flex justify-start items-center h-16">
-          <div class="flex-shrink-0 flex items-center cursor-pointer">
+          <a
+            href="/"
+            class="flex-shrink-0 flex items-center min-w-0 no-underline hover:opacity-95 transition-opacity"
+          >
             <img
-              src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon-no-bg.svg{{/if}}"
-              alt="{{#if brandName}}{{brandName}}{{else}}Bento PDF{{/if}} Logo"
-              class="h-8 w-8"
+              src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/quotation-plan-logo.svg{{/if}}"
+              alt="{{#if brandName}}{{brandName}}{{else}}QUOTATION PLAN{{/if}}"
+              class="h-8 md:h-9 w-auto max-w-[min(100%,280px)] object-contain object-left"
             />
-            <span class="text-white font-bold text-xl ml-2">
-              <a href="/"
-                >{{#if brandName}}{{brandName}}{{else}}MyPDF{{/if}}</a
-              >
-            </span>
-          </div>
+          </a>
         </div>
       </div>
     </nav>

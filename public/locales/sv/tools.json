@@ -1123,7 +1123,7 @@
     "resetWithDefaults": "Anpassade åsidosättningar rensade. Förkonfigurerade standardvärden är aktiva.",
     "resetNoDefaults": "Alla konfigurationer och cachade moduler har rensats.",
     "licenseTitle": "Licensmeddelande:",
-    "licenseDescription": "De externa modulerna (PyMuPDF, Ghostscript, CoherentPDF) är licensierade under AGPL-3.0 eller liknande copyleft-licenser. Genom att konfigurera och använda dessa moduler godkänner du deras respektive licensvillkor. BentoPDF är kompatibel med alla Ghostscript WASM- och PyMuPDF WASM-implementationer som följer det förväntade gränssnittet."
+    "licenseDescription": "De externa modulerna (PyMuPDF, Ghostscript, CoherentPDF) är licensierade under AGPL-3.0 eller liknande copyleft-licenser. Genom att konfigurera och använda dessa moduler godkänner du deras respektive licensvillkor. MyPDF är kompatibel med alla Ghostscript WASM- och PyMuPDF WASM-implementationer som följer det förväntade gränssnittet."
   },
   "pdfOverlay": {
     "name": "PDF-överlägg",

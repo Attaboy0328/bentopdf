@@ -1123,7 +1123,7 @@
     "resetWithDefaults": "カスタムオーバーライドをクリアしました。事前設定されたデフォルトがアクティブです。",
     "resetNoDefaults": "すべての設定とキャッシュされたモジュールがクリアされました。",
     "licenseTitle": "ライセンス通知:",
-    "licenseDescription": "外部モジュール (PyMuPDF、Ghostscript、CoherentPDF) はAGPL-3.0または同様のコピーレフトライセンスでライセンスされています。これらのモジュールを設定して使用することにより、それぞれのライセンス条件に同意したことになります。BentoPDFは、期待されるインターフェースに従う任意のGhostscript WASMおよびPyMuPDF WASM実装と互換性があります。"
+    "licenseDescription": "外部モジュール (PyMuPDF、Ghostscript、CoherentPDF) はAGPL-3.0または同様のコピーレフトライセンスでライセンスされています。これらのモジュールを設定して使用することにより、それぞれのライセンス条件に同意したことになります。MyPDFは、期待されるインターフェースに従う任意のGhostscript WASMおよびPyMuPDF WASM実装と互換性があります。"
   },
   "pdfOverlay": {
     "name": "PDFオーバーレイ",

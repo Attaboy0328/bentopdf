@@ -1123,7 +1123,7 @@
     "resetWithDefaults": "已清除自定義覆蓋。預配置的默認值已激活。",
     "resetNoDefaults": "所有配置和缓存模块均已清除。",
     "licenseTitle": "许可證通知：",
-    "licenseDescription": "外部模块（PyMuPDF、Ghostscript、CoherentPDF）根據 AGPL-3.0 或類似的 copyleft 许可證授權。配置和使用这些模块即表示您同意各自的许可證条款。BentoPDF 与遵循預期接口的任何 Ghostscript WASM 和 PyMuPDF WASM 實現兼容。"
+    "licenseDescription": "外部模块（PyMuPDF、Ghostscript、CoherentPDF）根據 AGPL-3.0 或類似的 copyleft 许可證授權。配置和使用这些模块即表示您同意各自的许可證条款。MyPDF 与遵循預期接口的任何 Ghostscript WASM 和 PyMuPDF WASM 實現兼容。"
   },
   "pdfOverlay": {
     "name": "PDF 疊加",

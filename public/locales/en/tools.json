@@ -1122,7 +1122,7 @@
     "resetWithDefaults": "Custom overrides cleared. Pre-configured defaults are active.",
     "resetNoDefaults": "All configurations and cached modules have been cleared.",
     "licenseTitle": "License Notice:",
-    "licenseDescription": "The external modules (PyMuPDF, Ghostscript, CoherentPDF) are licensed under AGPL-3.0 or similar copyleft licenses. By configuring and using these modules, you agree to their respective license terms. BentoPDF is compatible with any Ghostscript WASM and PyMuPDF WASM implementation that follows the expected interface."
+    "licenseDescription": "The external modules (PyMuPDF, Ghostscript, CoherentPDF) are licensed under AGPL-3.0 or similar copyleft licenses. By configuring and using these modules, you agree to their respective license terms. MyPDF is compatible with any Ghostscript WASM and PyMuPDF WASM implementation that follows the expected interface."
   },
   "pdfOverlay": {
     "name": "PDF Overlay",
