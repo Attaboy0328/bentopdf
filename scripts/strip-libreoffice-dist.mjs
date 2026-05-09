@@ -11,6 +11,16 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.resolve(__dirname, '../dist');
 
+const externalBase =
+  typeof process.env.VITE_LIBREOFFICE_BASE_URL === 'string'
+    ? process.env.VITE_LIBREOFFICE_BASE_URL.trim()
+    : '';
+if (!externalBase) {
+  console.warn(
+    '[strip-libreoffice-dist] VITE_LIBREOFFICE_BASE_URL is not set. Set it to your R2 (or other HTTPS) URL prefix where libreoffice-wasm files are hosted, e.g. https://wasm.example.com/libreoffice-wasm/'
+  );
+}
+
 function removeLibreOfficeWasmDirs(dir) {
   if (!fs.existsSync(dir)) {
     console.warn('[strip-libreoffice-dist] dist not found:', dir);
