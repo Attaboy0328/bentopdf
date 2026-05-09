@@ -24,6 +24,7 @@ concurrency:
 
 # Configure these variables under your repo settings.
 # You will likely need to set BASE_URL to be the name of your repo eg 'bentopdf'
+# Recommended GitHub Actions variable: SITE_URL = https://bentopdf-cf.pages.dev (your Cloudflare Pages URL)
 env:
   SIMPLE_MODE: ${{ vars.SIMPLE_MODE }}
   BASE_URL: ${{ vars.BASE_URL }}/
