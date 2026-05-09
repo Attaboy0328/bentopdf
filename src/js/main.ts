@@ -140,20 +140,10 @@ const init = async () => {
   // Hide shortcuts buttons on mobile devices (Android/iOS)
   // exclude iPad -> users can connect keyboard and use shortcuts
   const isMobile = /Android|iPhone|iPod/i.test(navigator.userAgent);
-  const keyboardShortcutBtn = document.getElementById('shortcut');
   const shortcutSettingsBtn = document.getElementById('open-shortcuts-btn');
 
-  if (isMobile) {
-    if (keyboardShortcutBtn) keyboardShortcutBtn.style.display = 'none';
-    if (shortcutSettingsBtn) shortcutSettingsBtn.style.display = 'none';
-  } else {
-    if (keyboardShortcutBtn) {
-      keyboardShortcutBtn.textContent = navigator.userAgent
-        .toUpperCase()
-        .includes('MAC')
-        ? '⌘ + K'
-        : 'Ctrl + K';
-    }
+  if (isMobile && shortcutSettingsBtn) {
+    shortcutSettingsBtn.style.display = 'none';
   }
 
   const categoryTranslationKeys: Record<string, string> = {
@@ -592,17 +582,23 @@ const init = async () => {
       createIcons({ icons });
     });
 
-    window.addEventListener('keydown', function (e) {
-      const key = e.key.toLowerCase();
-      const isMac = navigator.userAgent.toUpperCase().includes('MAC');
-      const isCtrlK = e.ctrlKey && key === 'k';
-      const isCmdK = isMac && e.metaKey && key === 'k';
+    window.addEventListener(
+      'keydown',
+      function (e) {
+        if (!searchBar) return;
+        const key = e.key.toLowerCase();
+        const isMac = navigator.userAgent.toUpperCase().includes('MAC');
+        const isCtrlK = e.ctrlKey && key === 'k';
+        const isCmdK = isMac && e.metaKey && key === 'k';
 
-      if (isCtrlK || isCmdK) {
-        e.preventDefault();
-        searchBar.focus();
-      }
-    });
+        if (isCtrlK || isCmdK) {
+          e.preventDefault();
+          e.stopPropagation();
+          searchBar.focus();
+        }
+      },
+      true
+    );
 
     dom.toolGrid.addEventListener('click', () => {
       // All tools now use href and navigate directly - no modal handling needed
