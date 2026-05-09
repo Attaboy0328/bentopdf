@@ -1,0 +1,61 @@
+<a
+  href="{{baseUrl}}"
+  class="mypdf-brand-home-link flex items-center min-w-0 gap-0 no-underline hover:opacity-90 transition-opacity"
+>
+  {{#if brandLogo}}
+  <img
+    id="nav-logo"
+    src="{{baseUrl}}{{brandLogo}}"
+    alt="{{#if brandName}}{{brandName}}{{else}}MyPDF{{/if}} Logo"
+    width="168"
+    height="36"
+    class="h-9 md:h-10 w-auto max-w-[min(100%,220px)] object-contain object-left flex-shrink-0"
+    decoding="async"
+  />
+  {{else}}
+  <svg
+    id="nav-logo"
+    class="mypdf-brand-logo h-9 md:h-10 w-auto max-w-[min(100%,220px)] flex-shrink-0 object-left object-contain"
+    viewBox="0 0 168 36"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-labelledby="mypdf-brand-logo-title"
+    focusable="false"
+  >
+    <title id="mypdf-brand-logo-title">
+      {{#if brandName}}{{brandName}}{{else}}MyPDF{{/if}}
+    </title>
+    <!-- Rear sheet -->
+    <rect
+      class="mypdf-brand-icon-gray"
+      x="14"
+      y="12"
+      width="17"
+      height="21"
+      rx="2"
+    />
+    <!-- Front sheet + folded corner -->
+    <path class="mypdf-brand-icon-red" d="M 4 6 H 18 L 22 10 V 30 H 4 Z" />
+    <!-- “Hole” matches nav background -->
+    <rect
+      class="mypdf-brand-cutout"
+      x="7"
+      y="21"
+      width="6.5"
+      height="6.5"
+      rx="1"
+    />
+    <text
+      x="41"
+      y="24.5"
+      font-family="Inter, ui-sans-serif, system-ui, sans-serif"
+      font-size="17"
+      font-weight="700"
+      letter-spacing="-0.03em"
+    >
+      <tspan class="mypdf-brand-my">My</tspan>
+      <tspan class="mypdf-brand-pdf">PDF</tspan>
+    </text>
+  </svg>
+  {{/if}}
+</a>

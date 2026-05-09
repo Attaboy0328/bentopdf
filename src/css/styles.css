@@ -834,18 +834,42 @@ body.mypdf-home {
   overflow: visible;
 }
 
-.mypdf-nav-brand,
-.mypdf-nav-brand a {
-  color: var(--mypdf-ink);
+.mypdf-brand-logo .mypdf-brand-my {
+  fill: #0f172a;
 }
 
-.mypdf-nav-brand a:hover {
-  color: var(--mypdf-primary);
+html[data-theme='dark'] .mypdf-brand-logo .mypdf-brand-my {
+  fill: #ffffff;
 }
 
-.mypdf-nav-brand a:focus-visible {
+.mypdf-brand-logo .mypdf-brand-pdf {
+  fill: #e51a1a;
+}
+
+.mypdf-brand-logo .mypdf-brand-icon-red {
+  fill: #e51a1a;
+}
+
+.mypdf-brand-logo .mypdf-brand-icon-gray {
+  fill: #8e919d;
+}
+
+.mypdf-nav .mypdf-brand-cutout {
+  fill: var(--mypdf-nav-bg);
+}
+
+/* Simple-mode top bar (Tailwind gray-800) — match cutout + wordmark to bar */
+nav.bg-gray-800 .mypdf-brand-cutout {
+  fill: #1f2937;
+}
+
+nav.bg-gray-800 .mypdf-brand-logo .mypdf-brand-my {
+  fill: #ffffff;
+}
+
+.mypdf-brand-home-link:focus-visible {
   outline: none;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   box-shadow: var(--mypdf-focus-ring);
 }
 

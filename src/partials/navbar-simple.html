@@ -1,27 +1,21 @@
 <nav class="mypdf-nav sticky top-0 z-30" data-simple-nav="true">
   <div class="container mx-auto px-4">
     <div
-      class="flex justify-between items-center gap-2 md:gap-4 min-h-14 md:min-h-[4.25rem] py-1.5"
+      class="mypdf-nav-inner grid grid-cols-[1fr_auto_1fr] items-center gap-2 md:gap-4 min-h-14 md:min-h-[4.25rem] py-1.5"
     >
-      <a
-        href="{{baseUrl}}"
-        class="flex-shrink-0 flex items-center min-w-0 gap-0 no-underline hover:opacity-95 transition-opacity"
+      <div
+        class="flex-shrink-0 flex items-center cursor-pointer min-w-0 justify-self-start"
       >
-        <img
-          id="nav-logo"
-          src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/quotation-plan-logo.svg{{/if}}"
-          alt="{{#if brandName}}{{brandName}}{{else}}QUOTATION PLAN{{/if}}"
-          class="h-8 md:h-9 w-auto max-w-[min(100%,280px)] object-contain object-left"
-        />
-      </a>
+        {{> mypdf-brand-logo }}
+      </div>
 
       <div
         id="mypdf-header-category-nav"
-        class="mypdf-header-category-nav flex-1 min-w-0 justify-center items-center px-1 overflow-visible"
+        class="mypdf-header-category-nav min-w-0 justify-self-center px-1 overflow-visible"
         aria-label="Tool categories"
       ></div>
 
-      <div class="flex items-center gap-2 flex-shrink-0">
+      <div class="flex items-center gap-2 flex-shrink-0 justify-self-end">
         <button
           type="button"
           id="mypdf-theme-toggle"
