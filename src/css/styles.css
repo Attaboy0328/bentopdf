@@ -1125,13 +1125,14 @@ body.mypdf-home #tool-grid .category-group {
   font-weight: 600;
   line-height: 1.25;
   border: 1px solid var(--mypdf-hairline);
-  background-color: var(--mypdf-surface);
+  background-color: transparent;
   color: var(--mypdf-ink);
   text-decoration: none;
   transition:
     border-color 0.15s ease,
     color 0.15s ease,
-    box-shadow 0.15s ease;
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .mypdf-cat-pill:hover {
@@ -1141,8 +1142,12 @@ body.mypdf-home #tool-grid .category-group {
     var(--mypdf-hairline)
   );
   color: var(--mypdf-primary);
-  box-shadow: 0 1px 10px
-    color-mix(in srgb, var(--mypdf-primary) 14%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--mypdf-primary) 10%,
+    transparent
+  );
+  box-shadow: none;
 }
 
 @media (max-width: 639px) {
@@ -1152,17 +1157,22 @@ body.mypdf-home #tool-grid .category-group {
 }
 
 body.mypdf-home #tool-grid .tool-card.mypdf-tool-card {
-  background-color: var(--mypdf-surface);
-  border-color: var(--mypdf-card-border);
+  background-color: transparent;
+  border-color: var(--mypdf-hairline);
   border-width: 1px;
   border-style: solid;
 }
 
 body.mypdf-home #tool-grid .tool-card.mypdf-tool-card:hover {
-  border-color: color-mix(in srgb, var(--mypdf-primary) 45%, var(--mypdf-card-border));
+  background-color: color-mix(
+    in srgb,
+    var(--mypdf-primary) 10%,
+    transparent
+  );
+  border-color: color-mix(in srgb, var(--mypdf-primary) 45%, var(--mypdf-hairline));
   box-shadow:
-    0 12px 28px -14px color-mix(in srgb, var(--mypdf-primary) 28%, transparent),
-    0 4px 12px -4px rgba(0, 0, 0, 0.12);
+    0 12px 28px -14px color-mix(in srgb, var(--mypdf-primary) 22%, transparent),
+    0 4px 12px -4px rgba(0, 0, 0, 0.08);
 }
 
 body.mypdf-home #tool-grid .tool-card-icon {
