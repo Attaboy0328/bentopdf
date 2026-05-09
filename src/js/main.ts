@@ -288,6 +288,8 @@ const init = async () => {
   if (dom.toolGrid) {
     dom.toolGrid.textContent = '';
 
+    const editorialHome = document.body.classList.contains('mypdf-editorial');
+
     let collapsedCategories: string[] = [];
     try {
       const stored = localStorage.getItem('collapsedCategories');
@@ -324,8 +326,9 @@ const init = async () => {
 
       const chevron = document.createElement('i');
       chevron.setAttribute('data-lucide', 'chevron-down');
-      chevron.className =
-        'category-chevron w-5 h-5 text-gray-400 transition-transform duration-300';
+      chevron.className = editorialHome
+        ? 'category-chevron w-5 h-5 text-slate-500 transition-transform duration-300'
+        : 'category-chevron w-5 h-5 text-gray-400 transition-transform duration-300';
 
       header.append(title, chevron);
 
@@ -371,29 +374,35 @@ const init = async () => {
       category.tools.forEach((tool) => {
         let toolCard: HTMLDivElement | HTMLAnchorElement;
 
+        const cardSurface = editorialHome
+          ? 'border border-[#E8E4DD] bg-[#fefdfb] shadow-sm hover:shadow-md hover:border-[#0062AD]/40'
+          : 'bg-gray-800 hover:shadow-lg';
+
         if (tool.href) {
           toolCard = document.createElement('a');
           toolCard.href = tool.href;
-          toolCard.className =
-            'tool-card block bg-gray-800 rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center no-underline hover:shadow-lg transition duration-200';
+          toolCard.className = `tool-card block rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center no-underline transition duration-200 ${cardSurface}`;
         } else {
           toolCard = document.createElement('div');
-          toolCard.className =
-            'tool-card bg-gray-800 rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center hover:shadow-lg transition duration-200';
+          toolCard.className = `tool-card rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center transition duration-200 ${cardSurface}`;
           toolCard.dataset.toolId = getToolId(tool);
         }
 
+        const accentIcon = editorialHome ? 'text-[#0062AD]' : 'text-indigo-400';
+
         const icon = document.createElement('i');
-        icon.className = 'w-10 h-10 mb-3 text-indigo-400';
+        icon.className = `w-10 h-10 mb-3 ${accentIcon}`;
 
         if (tool.icon.startsWith('ph-')) {
-          icon.className = `ph ${tool.icon} text-4xl mb-3 text-indigo-400`;
+          icon.className = `ph ${tool.icon} text-4xl mb-3 ${accentIcon}`;
         } else {
           icon.setAttribute('data-lucide', tool.icon);
         }
 
         const toolName = document.createElement('h3');
-        toolName.className = 'font-semibold text-white';
+        toolName.className = editorialHome
+          ? 'font-semibold text-[#0A2540]'
+          : 'font-semibold text-white';
         const toolKey = toolTranslationKeys[tool.name];
         toolName.textContent = toolKey ? t(`${toolKey}.name`) : tool.name;
 
@@ -401,7 +410,9 @@ const init = async () => {
 
         if (tool.subtitle) {
           const toolSubtitle = document.createElement('p');
-          toolSubtitle.className = 'text-xs text-gray-400 mt-1 px-2';
+          toolSubtitle.className = editorialHome
+            ? 'text-xs text-slate-500 mt-1 px-2'
+            : 'text-xs text-gray-400 mt-1 px-2';
           toolSubtitle.textContent = toolKey
             ? t(`${toolKey}.subtitle`)
             : tool.subtitle;

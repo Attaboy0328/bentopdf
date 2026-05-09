@@ -726,3 +726,253 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none; /* Chrome, Safari, Edge */
   margin: 0;
 }
+
+/* -------------------------------------------------------------------------- */
+/* Editorial landing (aligned with quotation.282913.xyz trust / paper theme) */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  --qe-primary: #0062ad;
+  --qe-deep: #304166;
+  --qe-ink: #0a2540;
+  --qe-paper: #f9f8f6;
+  --qe-paper-surface: #fefdfb;
+  --qe-paper-muted: #f4f2ef;
+  --qe-hairline: #e8e4dd;
+  --qe-gold: #b5894a;
+  --qe-gold-soft: #e9d9b8;
+}
+
+.font-en {
+  font-family:
+    'Inter',
+    'Noto Sans SC',
+    var(--font-sans),
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+
+.font-num {
+  font-family:
+    'Inter',
+    ui-monospace,
+    'SF Mono',
+    monospace;
+  font-feature-settings: 'tnum' 1;
+}
+
+body.mypdf-editorial {
+  background-color: var(--qe-paper);
+  color: #334155;
+  font-family:
+    'Inter',
+    'Noto Sans SC',
+    var(--font-sans),
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+
+body.mypdf-editorial nav[data-simple-nav] {
+  background-color: rgba(254, 253, 251, 0.92);
+  border-bottom-color: var(--qe-hairline);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body.mypdf-editorial #nav-brand a,
+body.mypdf-editorial #nav-brand {
+  color: var(--qe-ink);
+}
+
+body.mypdf-editorial footer[data-simple-footer] {
+  margin-top: 4rem;
+  border-top-width: 1px;
+  border-top-color: var(--qe-hairline);
+  background-color: var(--qe-paper-muted);
+}
+
+body.mypdf-editorial #footer-brand {
+  color: var(--qe-ink);
+}
+
+body.mypdf-editorial #footer-copyright,
+body.mypdf-editorial footer .text-gray-400,
+body.mypdf-editorial footer .text-gray-500 {
+  color: #64748b;
+}
+
+.mypdf-landing-atmosphere {
+  position: relative;
+  isolation: isolate;
+}
+
+.mypdf-landing-atmosphere::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 720px;
+  background:
+    radial-gradient(
+      900px 480px at 50% -120px,
+      rgba(0, 98, 173, 0.08),
+      transparent 70%
+    ),
+    radial-gradient(
+      600px 320px at 12% 180px,
+      rgba(181, 137, 74, 0.05),
+      transparent 75%
+    ),
+    radial-gradient(
+      700px 360px at 88% 240px,
+      rgba(0, 98, 173, 0.04),
+      transparent 75%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mypdf-landing-atmosphere > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mypdf-hairline {
+  display: block;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--qe-hairline) 18%,
+    var(--qe-hairline) 82%,
+    transparent
+  );
+}
+
+body.mypdf-editorial .marker-slanted::before {
+  background: linear-gradient(120deg, var(--qe-primary), var(--qe-gold-soft));
+}
+
+body.mypdf-editorial .section-divider {
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--qe-hairline),
+    transparent
+  );
+  opacity: 1;
+}
+
+body.mypdf-editorial .category-header {
+  color: var(--qe-ink);
+}
+
+body.mypdf-editorial .category-header:hover {
+  color: var(--qe-primary);
+}
+
+body.mypdf-editorial .category-header:hover .category-chevron {
+  color: var(--qe-primary);
+}
+
+body.mypdf-editorial .tool-card {
+  border-color: var(--qe-hairline);
+  background-color: var(--qe-paper-surface);
+}
+
+body.mypdf-editorial .tool-card:hover {
+  border-color: rgba(0, 98, 173, 0.35);
+  box-shadow:
+    0 10px 24px -12px rgba(0, 98, 173, 0.18),
+    0 4px 8px -4px rgba(10, 37, 64, 0.06);
+}
+
+body.mypdf-editorial.compact-mode .tool-card {
+  border-bottom-color: var(--qe-hairline);
+}
+
+body.mypdf-editorial.compact-mode .tool-card:hover {
+  background-color: rgba(0, 98, 173, 0.05);
+}
+
+body.mypdf-editorial #security-compliance-section .text-white {
+  color: var(--qe-ink) !important;
+}
+
+body.mypdf-editorial #security-compliance-section .text-gray-400 {
+  color: #64748b !important;
+}
+
+body.mypdf-editorial #security-compliance-section .text-indigo-400 {
+  color: var(--qe-primary) !important;
+}
+
+body.mypdf-editorial #security-compliance-section .border-indigo-400 {
+  border-color: var(--qe-primary) !important;
+}
+
+body.mypdf-editorial #security-compliance-section .bg-indigo-900 {
+  background-color: rgba(0, 98, 173, 0.09) !important;
+}
+
+body.mypdf-editorial #security-compliance-section .text-indigo-300 {
+  color: var(--qe-deep) !important;
+}
+
+body.mypdf-editorial #faq-accordion > h2,
+body.mypdf-editorial #testimonials-section > h2 {
+  color: var(--qe-ink) !important;
+}
+
+body.mypdf-editorial .faq-item.bg-gray-800 {
+  background-color: var(--qe-paper-surface) !important;
+}
+
+body.mypdf-editorial .faq-item.border-gray-700 {
+  border-color: var(--qe-hairline) !important;
+}
+
+body.mypdf-editorial .faq-question .text-white {
+  color: var(--qe-ink) !important;
+}
+
+body.mypdf-editorial .faq-answer .text-gray-400,
+body.mypdf-editorial .faq-answer p {
+  color: #475569 !important;
+}
+
+body.mypdf-editorial .faq-item .faq-icon {
+  color: #94a3b8 !important;
+}
+
+body.mypdf-editorial .faq-item.open .faq-question {
+  color: var(--qe-primary) !important;
+}
+
+body.mypdf-editorial .faq-answer a.text-indigo-400 {
+  color: var(--qe-primary) !important;
+}
+
+body.mypdf-editorial .testimonial-card {
+  background-color: var(--qe-paper-surface);
+  border-color: var(--qe-hairline);
+}
+
+body.mypdf-editorial .testimonial-card .text-white {
+  color: var(--qe-ink) !important;
+}
+
+body.mypdf-editorial .testimonial-card .text-gray-400 {
+  color: #475569 !important;
+}
+
+body.mypdf-editorial .testimonial-card .text-yellow-400 {
+  color: var(--qe-gold) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.mypdf-editorial .tool-card {
+    transition: none;
+  }
+}
