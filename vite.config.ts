@@ -465,6 +465,18 @@ export default defineConfig(() => {
     },
   ];
 
+  /** Full wordmarks on R2 (SVG); switched by `html[data-theme]` in CSS — see `mypdf-brand-logo.html`. */
+  const brandLogoR2Base = (
+    process.env.VITE_BRAND_LOGO_R2_BASE || 'https://wasm.mypdf.282913.xyz/SVG'
+  ).replace(/\/$/, '');
+  const useDualBrandLogos = process.env.VITE_USE_INLINE_BRAND_ONLY !== 'true';
+  const brandLogoLight =
+    process.env.VITE_BRAND_LOGO_LIGHT ||
+    `${brandLogoR2Base}/mypdf-logo-light.svg`;
+  const brandLogoDark =
+    process.env.VITE_BRAND_LOGO_DARK ||
+    `${brandLogoR2Base}/mypdf-logo-dark.svg`;
+
   return {
     base: (process.env.BASE_URL || '/').replace(/\/?$/, '/'),
     plugins: [
@@ -476,6 +488,9 @@ export default defineConfig(() => {
           simpleMode: process.env.SIMPLE_MODE === 'true',
           brandName: process.env.VITE_BRAND_NAME || 'MyPDF',
           brandLogo: process.env.VITE_BRAND_LOGO || '',
+          useDualBrandLogos,
+          brandLogoLight,
+          brandLogoDark,
           footerText: process.env.VITE_FOOTER_TEXT || '',
           appVersion: process.env.npm_package_version || 'Unknown',
         },

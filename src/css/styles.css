@@ -810,6 +810,44 @@ html[data-theme='dark'] body {
   color: var(--mypdf-muted);
 }
 
+/* Tool pages ship `body.bg-gray-900`, which wins over the rule above in the cascade.
+   In light theme the page background must stay cream/off-white so content outside gray cards stays readable. */
+html[data-theme='light'] body.bg-gray-900:not(.mypdf-home) {
+  background-color: var(--mypdf-page-bg);
+}
+
+/* “How it works” sits on the page background (not inside gray-800 cards). Map frozen Tailwind colors to theme tokens in light mode only (step number badges use h3/h2 vs circle div.text-white). */
+html[data-theme='light']
+  section:has([data-i18n='howItWorks.title'])
+  h2.text-white,
+html[data-theme='light']
+  section:has([data-i18n='howItWorks.title'])
+  h3.text-white {
+  color: var(--mypdf-ink);
+}
+
+html[data-theme='light']
+  section:has([data-i18n='howItWorks.title'])
+  p.text-gray-400,
+html[data-theme='light']
+  section:has([data-i18n='howItWorks.title'])
+  p.text-gray-300,
+html[data-theme='light']
+  section:has([data-i18n='howItWorks.title'])
+  li.text-gray-400 {
+  color: var(--mypdf-muted);
+}
+
+/* Minimal tool footer: neutral borders + readable muted copy */
+.mypdf-site-footer {
+  border-top-color: var(--mypdf-hairline);
+  color: var(--mypdf-muted);
+}
+
+.mypdf-site-footer .mypdf-footer-version {
+  color: color-mix(in srgb, var(--mypdf-muted) 82%, var(--mypdf-ink));
+}
+
 body.mypdf-home {
   /* Motion tokens: ease-out-quart-ish, no bouncy curves */
   --mypdf-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -871,6 +909,40 @@ nav.bg-gray-800 .mypdf-brand-logo .mypdf-brand-my {
   outline: none;
   border-radius: 0.375rem;
   box-shadow: var(--mypdf-focus-ring);
+}
+
+/* Remote full wordmarks (light/dark SVG from R2); visibility follows html[data-theme] */
+.mypdf-brand-raster {
+  height: 2.25rem;
+  width: auto;
+  max-width: min(100%, 220px);
+  object-fit: contain;
+  object-position: left center;
+}
+
+@media (min-width: 768px) {
+  .mypdf-brand-raster {
+    height: 2.5rem;
+  }
+}
+
+html[data-theme='light'] .mypdf-brand-raster--light,
+html[data-theme='dark'] .mypdf-brand-raster--dark {
+  display: block;
+}
+
+html[data-theme='light'] .mypdf-brand-raster--dark,
+html[data-theme='dark'] .mypdf-brand-raster--light {
+  display: none;
+}
+
+/* Simple-mode navbar stays gray — always use dark-theme wordmark for contrast */
+nav.bg-gray-800 .mypdf-brand-raster--light {
+  display: none;
+}
+
+nav.bg-gray-800 .mypdf-brand-raster--dark {
+  display: block;
 }
 
 #mypdf-theme-toggle {

@@ -2,7 +2,29 @@
   href="{{baseUrl}}"
   class="mypdf-brand-home-link flex items-center min-w-0 gap-0 no-underline hover:opacity-90 transition-opacity"
 >
-  {{#if brandLogo}}
+  {{#if useDualBrandLogos}}
+  <span
+    id="nav-logo"
+    class="inline-flex items-center flex-shrink-0 min-h-9 md:min-h-10"
+  >
+    <img
+      class="mypdf-brand-raster mypdf-brand-raster--light"
+      src="{{brandLogoLight}}"
+      alt="{{#if brandName}}{{brandName}}{{else}}MyPDF{{/if}}"
+      width="220"
+      height="40"
+      decoding="async"
+    />
+    <img
+      class="mypdf-brand-raster mypdf-brand-raster--dark"
+      src="{{brandLogoDark}}"
+      alt="{{#if brandName}}{{brandName}}{{else}}MyPDF{{/if}}"
+      width="220"
+      height="40"
+      decoding="async"
+    />
+  </span>
+  {{else}} {{#if brandLogo}}
   <img
     id="nav-logo"
     src="{{baseUrl}}{{brandLogo}}"
@@ -57,5 +79,5 @@
       <tspan class="mypdf-brand-pdf">PDF</tspan>
     </text>
   </svg>
-  {{/if}}
+  {{/if}} {{/if}}
 </a>
