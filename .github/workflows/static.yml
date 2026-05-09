@@ -1,4 +1,7 @@
 # Build on push to main and deploy static assets to Cloudflare Pages.
+# Cloudflare Pages rejects any single file > 25 MiB. This repo ships LibreOffice WASM larger than that,
+# so we use npm run build:cloudflare (strip-libreoffice-dist) to remove wasm from dist before upload.
+# Host those files on R2/S3 and set VITE_LIBREOFFICE_BASE_URL so Office tools still work.
 #
 # Pages project name must match Cloudflare exactly: Workers & Pages → select project → name in sidebar.
 # Override via repository variable CLOUDFLARE_PAGES_PROJECT_NAME if different from default "mypdf".
@@ -9,10 +12,12 @@
 #                            Cloudflare Pages → Edit (see Cloudflare docs for CI tokens).
 #   CLOUDFLARE_ACCOUNT_ID  — Cloudflare dashboard right sidebar (Account ID).
 #
-# Recommended repository variables (Settings → Variables → Actions):
+# Optional repository variables:
 #   CLOUDFLARE_PAGES_PROJECT_NAME — Optional. Defaults to mypdf if unset.
-#   SITE_URL                      — Public origin for SEO scripts, e.g. https://mypdf.282913.xyz
-#   BASE_URL                      — Vite base path; use "/" for apex Pages deploy (or "/repo/" if needed).
+#   SITE_URL                      — Public origin for SEO, e.g. https://mypdf.282913.xyz
+#   BASE_URL                      — Vite base path; "/" for apex Pages deploy.
+#   VITE_LIBREOFFICE_BASE_URL — HTTPS prefix where libreoffice-wasm lives (e.g. R2 public bucket URL).
+#                               Set at build time for Office-related tools. If unset, deploy works but LO tools may 404 until set.
 #
 # If your Pages project is also connected to Git in the Cloudflare dashboard, pick ONE source:
 # either this workflow OR Cloudflare Git integration — otherwise you get duplicate builds.
@@ -35,6 +40,7 @@ env:
   SIMPLE_MODE: ${{ vars.SIMPLE_MODE }}
   BASE_URL: ${{ vars.BASE_URL }}/
   SITE_URL: ${{ vars.SITE_URL }}
+  VITE_LIBREOFFICE_BASE_URL: ${{ vars.VITE_LIBREOFFICE_BASE_URL }}
   HUSKY: "0"
 
 jobs:
@@ -54,7 +60,7 @@ jobs:
         run: npm ci
 
       - name: Build distribution
-        run: npm run build
+        run: npm run build:cloudflare
 
       - name: Resolve Cloudflare Pages project name
         id: cfproject
