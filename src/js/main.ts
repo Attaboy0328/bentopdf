@@ -31,6 +31,13 @@ import { mountHeaderCategoryNav } from './ui/header-category-nav.js';
 declare const __BRAND_NAME__: string;
 
 const init = async () => {
+  if (
+    typeof window !== 'undefined' &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    document.documentElement.classList.add('mypdf-motion-safe');
+  }
+
   await initI18n();
   await loadRuntimeConfig();
   initThemeToggle();

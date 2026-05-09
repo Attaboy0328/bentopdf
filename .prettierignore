@@ -1,2 +1,3 @@
 # Handlebars partials with template syntax inside HTML attributes
 src/partials/footer.html
+src/partials/footer-minimal.html
