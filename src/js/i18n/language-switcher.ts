@@ -9,8 +9,8 @@ import {
 export type LanguageSwitcherPlacement = 'navbar' | 'footer' | 'default';
 
 const NAVBAR_BUTTON_CLASS = `
-  mypdf-lang-btn relative inline-flex h-9 min-w-[4.5rem] items-center justify-center
-  rounded-full border px-3 pr-7 text-sm font-medium
+  mypdf-lang-btn grid h-9 min-w-[4.75rem] shrink-0 grid-cols-[1fr_auto_1fr] items-center
+  rounded-full border px-1 text-sm font-medium
   transition-colors duration-200
 `.trim();
 
@@ -27,7 +27,7 @@ export const createLanguageSwitcher = (
   const currentLang = getLanguageFromUrl();
   const isNavbar = placement === 'navbar';
 
-  const container = document.createElement('div');
+  const container = document.createElement('motion');
   container.className = 'relative';
   container.id = 'language-switcher';
 
@@ -38,13 +38,13 @@ export const createLanguageSwitcher = (
 
   const textSpan = document.createElement('span');
   textSpan.className = isNavbar
-    ? 'mypdf-lang-btn__label block w-full text-center leading-none'
+    ? 'mypdf-lang-btn__label col-start-2 whitespace-nowrap text-center leading-none'
     : 'font-medium';
   textSpan.textContent = languageNames[currentLang];
 
   const chevron = document.createElement('svg');
   chevron.className = isNavbar
-    ? 'mypdf-lang-btn__chevron pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2'
+    ? 'mypdf-lang-btn__chevron col-start-3 mr-1 h-4 w-4 justify-self-end'
     : 'w-4 h-4 shrink-0';
   chevron.setAttribute('fill', 'none');
   chevron.setAttribute('stroke', 'currentColor');
@@ -56,7 +56,7 @@ export const createLanguageSwitcher = (
   button.appendChild(textSpan);
   button.appendChild(chevron);
 
-  const dropdown = document.createElement('div');
+  const dropdown = document.createElement('motion');
   dropdown.className = `
     hidden absolute right-0 mt-2 z-[100]
     w-64 max-w-[calc(100vw-2rem)]
@@ -65,7 +65,7 @@ export const createLanguageSwitcher = (
   `.trim();
   dropdown.setAttribute('role', 'menu');
 
-  const searchWrapper = document.createElement('div');
+  const searchWrapper = document.createElement('motion');
   searchWrapper.className =
     'p-2 border-b border-gray-700 bg-gray-800 flex-shrink-0';
 
@@ -88,7 +88,7 @@ export const createLanguageSwitcher = (
   searchWrapper.appendChild(searchInput);
   dropdown.appendChild(searchWrapper);
 
-  const list = document.createElement('div');
+  const list = document.createElement('motion');
   list.className = 'max-h-64 overflow-y-auto py-1';
   list.setAttribute('role', 'none');
 
@@ -227,7 +227,7 @@ export const injectLanguageSwitcher = (): void => {
     const socialIconsContainer = followUsColumn.querySelector('.space-x-4');
 
     if (socialIconsContainer) {
-      const wrapper = document.createElement('div');
+      const wrapper = document.createElement('motion');
       wrapper.className = 'inline-flex flex-col gap-4';
 
       socialIconsContainer.parentNode?.insertBefore(
@@ -260,7 +260,7 @@ export const injectLanguageSwitcher = (): void => {
 
       wrapper.appendChild(switcher);
     } else {
-      const switcherContainer = document.createElement('div');
+      const switcherContainer = document.createElement('motion');
       switcherContainer.className = 'mt-4 w-full';
       const switcher = createLanguageSwitcher('footer');
       switcherContainer.appendChild(switcher);
