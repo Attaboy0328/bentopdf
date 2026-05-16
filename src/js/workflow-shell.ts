@@ -14,8 +14,16 @@ import {
 } from './i18n/index.js';
 import { initThemeToggle } from './theme.js';
 import { mountHeaderCategoryNav } from './ui/header-category-nav.js';
+import {
+  initPageMotion,
+  markRevealRoots,
+  revealPage,
+} from './ui/page-reveal.js';
 
 async function init(): Promise<void> {
+  initPageMotion();
+  markRevealRoots();
+
   await initI18n();
   await loadRuntimeConfig();
   initThemeToggle();
@@ -35,6 +43,7 @@ async function init(): Promise<void> {
   });
 
   rewriteLinks();
+  revealPage();
 }
 
 void init();

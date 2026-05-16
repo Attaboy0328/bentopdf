@@ -28,15 +28,16 @@ import {
   toolTranslationKeys,
 } from './config/i18n-tool-maps.js';
 import { mountHeaderCategoryNav } from './ui/header-category-nav.js';
+import {
+  initPageMotion,
+  markRevealRoots,
+  revealPage,
+} from './ui/page-reveal.js';
 declare const __BRAND_NAME__: string;
 
 const init = async () => {
-  if (
-    typeof window !== 'undefined' &&
-    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  ) {
-    document.documentElement.classList.add('mypdf-motion-safe');
-  }
+  initPageMotion();
+  markRevealRoots();
 
   await initI18n();
   await loadRuntimeConfig();
@@ -60,6 +61,7 @@ const init = async () => {
         <a href="${import.meta.env.BASE_URL}" class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition">${backHome}</a>
       </div>
     `;
+    revealPage();
     return;
   }
 
@@ -1065,6 +1067,10 @@ const init = async () => {
 
   // Rewrite links after all dynamic content is fully loaded
   rewriteLinks();
+
+  revealPage({
+    staggerCategories: document.body.classList.contains('mypdf-home'),
+  });
 };
 
 window.addEventListener('load', init);
