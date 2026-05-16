@@ -43,6 +43,7 @@ env:
   BASE_URL: ${{ vars.BASE_URL }}
   SITE_URL: ${{ vars.SITE_URL }}
   VITE_LIBREOFFICE_BASE_URL: ${{ vars.VITE_LIBREOFFICE_BASE_URL }}
+  VITE_DEFAULT_LANGUAGE: zh
   HUSKY: "0"
 
 jobs:

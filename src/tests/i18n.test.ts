@@ -27,7 +27,7 @@ describe('getLanguageFromUrl', () => {
 
     // Reset import.meta.env
     vi.stubEnv('BASE_URL', '/');
-    vi.stubEnv('VITE_DEFAULT_LANGUAGE', 'en');
+    vi.stubEnv('VITE_DEFAULT_LANGUAGE', 'zh');
   });
 
   afterEach(() => {
@@ -108,14 +108,14 @@ describe('getLanguageFromUrl', () => {
     expect(getLanguageFromUrl()).toBe('vi');
   });
 
-  it('should fallback to en if everything else fails', () => {
+  it('should fallback to zh if everything else fails', () => {
     window.location.pathname = '/';
     Object.defineProperty(window.navigator, 'languages', {
       value: [],
       configurable: true,
     });
     vi.stubEnv('VITE_DEFAULT_LANGUAGE', '');
-    expect(getLanguageFromUrl()).toBe('en');
+    expect(getLanguageFromUrl()).toBe('zh');
   });
 
   it('should handle missing navigator object gracefully', () => {
@@ -124,6 +124,6 @@ describe('getLanguageFromUrl', () => {
       value: undefined,
       writable: true,
     });
-    expect(getLanguageFromUrl()).toBe('en');
+    expect(getLanguageFromUrl()).toBe('zh');
   });
 });

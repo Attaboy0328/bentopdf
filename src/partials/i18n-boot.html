@@ -1,0 +1,56 @@
+<script>
+  (function () {
+    var BASE = '{{baseUrl}}'.replace(/\/$/, '');
+    var DEFAULT_LANG = 'zh';
+    var LANG_RE =
+      /^(en|ar|be|ru|fr|de|es|zh|zh-TW|vi|tr|id|it|pt|nl|da|sv|ko|ja|uk)(?:\/|$)/;
+    var LANG_ID_RE =
+      /^(en|ar|be|ru|fr|de|es|zh|zh-TW|vi|tr|id|it|pt|nl|da|sv|ko|ja|uk)$/;
+
+    function pathWithoutBase() {
+      var path = window.location.pathname;
+      if (BASE && BASE !== '/' && path.indexOf(BASE) === 0) {
+        path = path.slice(BASE.length) || '/';
+      }
+      if (!path.startsWith('/')) path = '/' + path;
+      return path;
+    }
+
+    function resolveLang() {
+      var path = pathWithoutBase();
+      var match = path.match(/^\/([^/]+)/);
+      if (match && LANG_ID_RE.test(match[1])) return match[1];
+
+      try {
+        var stored = localStorage.getItem('i18nextLng');
+        if (stored && LANG_ID_RE.test(stored)) return stored;
+      } catch (e) {}
+
+      var nav = navigator.languages || [];
+      for (var i = 0; i < nav.length; i++) {
+        var tag = nav[i];
+        if (LANG_ID_RE.test(tag)) return tag;
+        var primary = tag.split('-')[0];
+        if (LANG_ID_RE.test(primary)) return primary;
+      }
+
+      return DEFAULT_LANG;
+    }
+
+    var lang = resolveLang();
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+    if (lang === 'en') return;
+
+    var path = pathWithoutBase();
+    if (LANG_RE.test(path.slice(1))) return;
+
+    var suffix = path === '/' ? '/' : path;
+    var target = (BASE || '') + '/' + lang + suffix;
+    target = target.replace(/\/{2,}/g, '/');
+    window.location.replace(
+      target + window.location.search + window.location.hash
+    );
+  })();
+</script>

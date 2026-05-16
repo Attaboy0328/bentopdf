@@ -1,5 +1,9 @@
 import i18next from 'i18next';
 import HttpBackend from 'i18next-http-backend';
+import enCommon from '../../../public/locales/en/common.json';
+import enTools from '../../../public/locales/en/tools.json';
+import zhCommon from '../../../public/locales/zh/common.json';
+import zhTools from '../../../public/locales/zh/tools.json';
 
 // Supported languages
 export const supportedLanguages = [
@@ -25,6 +29,9 @@ export const supportedLanguages = [
   'uk',
 ] as const;
 export type SupportedLanguage = (typeof supportedLanguages)[number];
+
+/** Site-wide default when URL, storage, and browser prefs do not pick a language. */
+export const DEFAULT_LANGUAGE: SupportedLanguage = 'zh';
 
 export const languageNames: Record<SupportedLanguage, string> = {
   en: 'English',
@@ -98,7 +105,7 @@ export const getLanguageFromUrl = (): SupportedLanguage => {
     return envLang as SupportedLanguage;
   }
 
-  return 'en';
+  return DEFAULT_LANGUAGE;
 };
 
 let initialized = false;
@@ -112,11 +119,16 @@ export const initI18n = async (): Promise<typeof i18next> => {
 
   await i18next.use(HttpBackend).init({
     lng: currentLang,
-    fallbackLng: 'en',
+    fallbackLng: DEFAULT_LANGUAGE,
     supportedLngs: supportedLanguages as unknown as string[],
     ns: ['common', 'tools'],
     defaultNS: 'common',
     preload: [currentLang],
+    partialBundledLanguages: true,
+    resources: {
+      en: { common: enCommon, tools: enTools },
+      zh: { common: zhCommon, tools: zhTools },
+    },
     backend: {
       loadPath: `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}locales/{{lng}}/{{ns}}.json`,
     },
@@ -216,6 +228,7 @@ export const applyTranslations = (): void => {
 
   document.documentElement.lang = i18next.language;
   document.documentElement.dir = i18next.language === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.dataset.i18nReady = 'true';
 };
 
 export const rewriteLinks = (): void => {

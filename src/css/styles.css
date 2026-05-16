@@ -32,6 +32,12 @@
     @apply antialiased;
     font-family: var(--font-sans);
   }
+
+  /* Hide English placeholders until i18next applies the resolved language */
+  html:not([data-i18n-ready='true']) [data-i18n],
+  html:not([data-i18n-ready='true']) [data-i18n-placeholder] {
+    visibility: hidden;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
