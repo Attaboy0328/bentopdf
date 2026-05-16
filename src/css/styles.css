@@ -969,6 +969,43 @@ nav.bg-gray-800 .mypdf-brand-raster--dark {
   transform: scale(0.94);
 }
 
+.mypdf-nav-lang {
+  align-items: center;
+}
+
+.mypdf-nav-build {
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--mypdf-muted);
+  user-select: all;
+  white-space: nowrap;
+}
+
+.mypdf-nav #language-switcher .mypdf-lang-btn {
+  border-color: var(--mypdf-hairline);
+  background-color: var(--mypdf-surface-2);
+  color: var(--mypdf-ink);
+}
+
+.mypdf-nav #language-switcher .mypdf-lang-btn:hover {
+  border-color: color-mix(
+    in srgb,
+    var(--mypdf-primary) 55%,
+    var(--mypdf-hairline)
+  );
+  color: var(--mypdf-primary);
+}
+
+.mypdf-nav #language-switcher .mypdf-lang-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--mypdf-focus-ring);
+}
+
+.mypdf-nav #language-switcher .mypdf-lang-btn:active {
+  transform: scale(0.97);
+}
+
 .mypdf-eyebrow {
   color: color-mix(in srgb, var(--mypdf-deep) 78%, transparent);
 }

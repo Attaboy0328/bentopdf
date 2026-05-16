@@ -35,7 +35,17 @@
             aria-hidden="true"
           ></i>
         </button>
-        <div id="simple-mode-lang-switcher" class="flex items-center"></div>
+        <div class="mypdf-nav-lang flex items-center gap-2">
+          <div id="simple-mode-lang-switcher" class="flex items-center"></div>
+          {{#if buildSha}}
+          <span
+            id="mypdf-nav-build"
+            class="mypdf-nav-build font-mono"
+            title="Build {{buildSha}}"
+            >{{buildSha}}</span
+          >
+          {{/if}}
+        </div>
       </div>
     </div>
   </div>

@@ -4,7 +4,8 @@ import { createLanguageSwitcher } from '../i18n/language-switcher.js';
 if (__SIMPLE_MODE__) {
   const langContainer = document.getElementById('simple-mode-lang-switcher');
   if (langContainer) {
-    const switcher = createLanguageSwitcher();
+    const inTopNav = Boolean(langContainer.closest('.mypdf-nav'));
+    const switcher = createLanguageSwitcher(inTopNav ? 'navbar' : 'footer');
     const dropdown = switcher.querySelector('div[role="menu"]');
     if (dropdown) {
       dropdown.classList.remove('mt-2');

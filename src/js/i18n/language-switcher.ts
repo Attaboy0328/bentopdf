@@ -6,32 +6,50 @@ import {
   t,
 } from './i18n';
 
-export const createLanguageSwitcher = (): HTMLElement => {
+export type LanguageSwitcherPlacement = 'navbar' | 'footer' | 'default';
+
+const NAVBAR_BUTTON_CLASS = `
+  mypdf-lang-btn relative inline-flex h-9 min-w-[4.5rem] items-center justify-center
+  rounded-full border px-3 pr-7 text-sm font-medium
+  transition-colors duration-200
+`.trim();
+
+const DEFAULT_BUTTON_CLASS = `
+  inline-flex items-center justify-center gap-1.5 text-sm font-medium
+  bg-gray-800 text-gray-200 border border-gray-600
+  px-3 py-1.5 rounded-full transition-colors duration-200
+  shadow-sm hover:shadow-md hover:bg-gray-700
+`.trim();
+
+export const createLanguageSwitcher = (
+  placement: LanguageSwitcherPlacement = 'default'
+): HTMLElement => {
   const currentLang = getLanguageFromUrl();
+  const isNavbar = placement === 'navbar';
 
   const container = document.createElement('div');
   container.className = 'relative';
   container.id = 'language-switcher';
 
   const button = document.createElement('button');
-  button.className = `
-    inline-flex items-center justify-center gap-1.5 text-sm font-medium
-    bg-gray-800 text-gray-200 border border-gray-600
-    px-3 py-1.5 rounded-full transition-colors duration-200
-    shadow-sm hover:shadow-md hover:bg-gray-700
-  `.trim();
+  button.className = isNavbar ? NAVBAR_BUTTON_CLASS : DEFAULT_BUTTON_CLASS;
   button.setAttribute('aria-haspopup', 'true');
   button.setAttribute('aria-expanded', 'false');
 
   const textSpan = document.createElement('span');
-  textSpan.className = 'font-medium';
+  textSpan.className = isNavbar
+    ? 'mypdf-lang-btn__label block w-full text-center leading-none'
+    : 'font-medium';
   textSpan.textContent = languageNames[currentLang];
 
   const chevron = document.createElement('svg');
-  chevron.className = 'w-4 h-4';
+  chevron.className = isNavbar
+    ? 'mypdf-lang-btn__chevron pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2'
+    : 'w-4 h-4 shrink-0';
   chevron.setAttribute('fill', 'none');
   chevron.setAttribute('stroke', 'currentColor');
   chevron.setAttribute('viewBox', '0 0 24 24');
+  chevron.setAttribute('aria-hidden', 'true');
   chevron.innerHTML =
     '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>';
 
@@ -54,7 +72,7 @@ export const createLanguageSwitcher = (): HTMLElement => {
   const searchPlaceholder =
     t('nav.searchLanguage') !== 'nav.searchLanguage'
       ? t('nav.searchLanguage')
-      : 'Search language…';
+      : 'Search language?';
 
   const searchInput = document.createElement('input');
   searchInput.type = 'search';
@@ -164,17 +182,22 @@ export const createLanguageSwitcher = (): HTMLElement => {
   return container;
 };
 
+function resolvePlacement(container: HTMLElement): LanguageSwitcherPlacement {
+  if (container.closest('.mypdf-nav')) return 'navbar';
+  if (container.closest('footer')) return 'footer';
+  return 'default';
+}
+
 export const injectLanguageSwitcher = (): void => {
   const simpleFooterLang =
     document.getElementById('simple-mode-lang-switcher') ||
     document.getElementById('simple-mode-language-switcher');
   if (simpleFooterLang) {
-    const switcher = createLanguageSwitcher();
+    const placement = resolvePlacement(simpleFooterLang);
+    const switcher = createLanguageSwitcher(placement);
     const dropdown = switcher.querySelector('div[role="menu"]');
     if (dropdown) {
-      // Open upward only in the footer; in the top navbar, upward placement is
-      // off-screen. Keep default (opens below the button) for `.mypdf-nav`.
-      const inTopNav = simpleFooterLang.closest('.mypdf-nav');
+      const inTopNav = placement === 'navbar';
       if (!inTopNav) {
         dropdown.classList.remove('mt-2');
         dropdown.classList.add('bottom-full', 'mb-2');
@@ -194,7 +217,7 @@ export const injectLanguageSwitcher = (): void => {
     if (
       h3.textContent?.trim() === 'Follow Us' ||
       h3.textContent?.trim() === 'Folgen Sie uns' ||
-      h3.textContent?.trim() === 'Theo dõi chúng tôi'
+      h3.textContent?.trim() === 'Theo d?i ch?ng t?i'
     ) {
       followUsColumn = h3.parentElement;
     }
@@ -213,7 +236,7 @@ export const injectLanguageSwitcher = (): void => {
       );
 
       wrapper.appendChild(socialIconsContainer);
-      const switcher = createLanguageSwitcher();
+      const switcher = createLanguageSwitcher('footer');
 
       switcher.className = 'relative w-full';
 
@@ -239,7 +262,7 @@ export const injectLanguageSwitcher = (): void => {
     } else {
       const switcherContainer = document.createElement('div');
       switcherContainer.className = 'mt-4 w-full';
-      const switcher = createLanguageSwitcher();
+      const switcher = createLanguageSwitcher('footer');
       switcherContainer.appendChild(switcher);
       followUsColumn.appendChild(switcherContainer);
     }

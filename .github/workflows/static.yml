@@ -62,6 +62,8 @@ jobs:
         run: npm ci
 
       - name: Build distribution
+        env:
+          VITE_BUILD_SHA: ${{ github.sha }}
         run: npm run build:cloudflare
 
       - name: Resolve Cloudflare Pages project name

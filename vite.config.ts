@@ -11,7 +11,20 @@ import viteCompression from 'vite-plugin-compression';
 import handlebars from 'vite-plugin-handlebars';
 import { resolve } from 'path';
 import fs from 'fs';
+import { execSync } from 'child_process';
 import { constants as zlibConstants } from 'zlib';
+
+function getBuildSha(): string {
+  const fromEnv = process.env.VITE_BUILD_SHA || process.env.GITHUB_SHA || '';
+  if (fromEnv) return fromEnv.slice(0, 7);
+  try {
+    return execSync('git rev-parse --short=7 HEAD', {
+      encoding: 'utf8',
+    }).trim();
+  } catch {
+    return '';
+  }
+}
 
 const SUPPORTED_LANGUAGES = [
   'en',
@@ -493,6 +506,7 @@ export default defineConfig(() => {
           brandLogoDark,
           footerText: process.env.VITE_FOOTER_TEXT || '',
           appVersion: process.env.npm_package_version || 'Unknown',
+          buildSha: getBuildSha(),
         },
       }),
       languageRouterPlugin(),
